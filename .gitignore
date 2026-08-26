@@ -1,0 +1,10 @@
+# Whitelist-Prinzip: Alles ist privat, bis es hier ausdrücklich freigegeben wird.
+# Neue Dateien tauchen erst im Repo auf, wenn sie unten eine !-Zeile bekommen.
+*
+!.gitignore
+!README.md
+!index.html
+!assets/
+!assets/cover.jpg
+!assets/banner.jpg
+!assets/viadee-logo.svg

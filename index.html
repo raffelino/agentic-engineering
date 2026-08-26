@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Errata &amp; Aktualisierungen — Von Vibe Coding zu Agentic Engineering</title>
+<meta name="description" content="Vom Autor gepflegte Errata- und Aktualisierungsseite zum Buch ‚Von Vibe Coding zu Agentic Engineering‘ (Carl Hanser Verlag, 2026): Korrekturen, fortgeschriebene Zahlen und Nachträge mit Fundstellen und Quellen.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128278;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --desk:#E8EBEF; --page:#FFFFFF;
+  --ink:#20293A; --ink2:#45526B; --ink3:#6C7A93;
+  --blau:#0A5A96; --blau-tief:#093F68; --akzent:#2E7BE0;
+  --rot:#BE2E27; --rot-soft:#F8E9E7;
+  --blau-soft:#E8F0F8; --grau-soft:#F1F3F6;
+  --rule:#D4DAE3; --rule2:#C0C8D4;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--desk);color:var(--ink);
+  font-family:"Source Serif 4",Charter,Georgia,serif;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:54rem;margin:0 auto;padding:clamp(1.4rem,4vw,3.4rem) clamp(1.2rem,5vw,4rem) 3rem;
+  background:var(--page);box-shadow:0 0 0 1px rgba(32,41,58,.06),0 18px 50px -30px rgba(32,41,58,.45)}
+@media(min-width:60rem){.wrap{margin:2.5rem auto}}
+p{margin:0 0 .85em}
+a{color:var(--akzent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--akzent);outline-offset:3px}
+h1,h2,h3,h4{font-family:"Source Sans 3","Segoe UI",Arial,sans-serif;color:var(--blau);margin:0;text-wrap:balance}
+h1{font-size:clamp(1.9rem,4.4vw,2.7rem);line-height:1.08;letter-spacing:-.015em;font-weight:700}
+h2{font-size:clamp(1.35rem,2.6vw,1.75rem);line-height:1.15;font-weight:700}
+h3{font-size:1.12rem;line-height:1.3;font-weight:700}
+h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--ink3)}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"Source Sans 3",sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--blau)}
+
+/* Buchkopf */
+.colhead{display:flex;justify-content:space-between;gap:1rem;
+  font-family:"Source Sans 3",sans-serif;font-size:.72rem;letter-spacing:.14em;font-weight:600;
+  color:var(--blau);border-bottom:2px solid var(--blau);padding-bottom:.45rem;margin-bottom:2.2rem}
+.titlegrid{display:grid;gap:1.6rem;grid-template-columns:1fr;align-items:start}
+@media(min-width:640px){.titlegrid{grid-template-columns:150px minmax(0,1fr)}}
+.cover{width:150px;height:auto;max-width:40vw;box-shadow:0 8px 22px -12px rgba(32,41,58,.55);border:1px solid var(--rule)}
+.anhang-label{font-family:"Source Sans 3",sans-serif;font-weight:700;font-size:.85rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--rot);margin-bottom:.6rem}
+.subtitle{font-family:"Source Sans 3",sans-serif;font-size:1.06rem;color:var(--ink2);margin:.5rem 0 .2rem;font-weight:600}
+.autorzeile{font-family:"Source Sans 3",sans-serif;color:var(--ink3);margin:0 0 .8rem}
+ul.meta{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem .55rem;
+  font-family:"Source Sans 3",sans-serif;font-size:.82rem;color:var(--ink2)}
+ul.meta li{border:1px solid var(--rule2);padding:.22rem .55rem;background:var(--grau-soft)}
+.lede{margin-top:1.8rem;font-size:1.04rem;color:var(--ink2);text-align:justify;hyphens:auto}
+
+/* Abschnitte */
+section{padding:2.4rem 0 .6rem;border-top:1px solid var(--rule);margin-top:2rem}
+section:first-of-type{border-top:0;margin-top:0}
+.sec-head{margin-bottom:1.6rem;max-width:none}
+.sec-head h2{margin:.25rem 0 .55rem}
+.sec-head p{color:var(--ink2);text-align:justify;hyphens:auto;max-width:65ch}
+
+/* Gebrauchstabelle */
+.guide{margin-top:1.2rem;border-top:2px solid var(--blau)}
+.guide-row{display:grid;grid-template-columns:minmax(0,1fr);gap:.2rem .9rem;padding:.7rem 0;border-bottom:1px solid var(--rule)}
+@media(min-width:700px){.guide-row{grid-template-columns:9.5rem minmax(0,1fr) 10.5rem;align-items:baseline}}
+.guide-k{font-family:"Source Sans 3",sans-serif;font-weight:700;font-size:.95rem;color:var(--blau)}
+.guide-d{font-size:.93rem;color:var(--ink2);line-height:1.5}
+.guide-w{font-family:"Source Sans 3",sans-serif;font-size:.78rem;color:var(--ink3);letter-spacing:.03em}
+.note{background:var(--grau-soft);border-top:2px solid var(--blau);border-bottom:1px solid var(--rule2);
+  padding:.95rem 1.1rem;margin-top:1.5rem;max-width:none}
+.note h4{color:var(--blau);margin-bottom:.35rem}
+.note p{font-size:.93rem;color:var(--ink);margin:0;line-height:1.55}
+
+/* Einträge im Buchstil */
+.entries{display:grid;gap:2.4rem;margin-top:1.2rem}
+.e{background:none;border:0;border-radius:0;box-shadow:none;overflow:visible;border-left:0;padding-left:0}
+.e.hi{border-left:0}
+.e-top{padding:0 0 .8rem;border-bottom:1px solid var(--rule);display:grid;gap:.45rem}
+.e-id{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.e-num{font-family:"Source Sans 3",sans-serif;font-size:1rem;font-weight:700;color:var(--blau);letter-spacing:.02em}
+.e.hi .e-num{color:var(--rot)}
+.pill{font-family:"Source Sans 3",sans-serif;font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  font-weight:700;padding:.18rem .5rem;border:1px solid currentColor;border-radius:0;background:none}
+.p-hi{color:var(--rot)} .p-med{color:var(--blau)} .p-low{color:var(--ink3)}
+.loc{font-family:"Source Sans 3",sans-serif;font-size:.84rem;color:var(--ink3);line-height:1.5}
+.loc b{color:var(--ink2);font-weight:700}
+.e-body{padding:1.05rem 0 0;display:grid;gap:1rem}
+.blk{display:grid;gap:.4rem}
+.blk p{margin:0;font-size:.97rem;line-height:1.6;color:var(--ink);text-align:justify;hyphens:auto}
+.blk p b,.blk p strong{color:var(--ink)}
+.q{border-left:3px solid var(--blau);padding:.1rem 0 .1rem .9rem;font-size:.96rem;line-height:1.55;
+  color:var(--ink2);font-style:italic;text-align:left}
+.q + .q{margin-top:.5rem}
+pre{margin:0;background:var(--grau-soft);border:1px solid var(--rule);padding:.75rem .9rem;overflow-x:auto;
+  font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.79rem;line-height:1.6;color:var(--ink)}
+
+/* Hanser-Kasten-Optik */
+.fix{background:var(--grau-soft);border-top:2px solid var(--blau);border-bottom:1px solid var(--rule2);
+  border-radius:0;padding:.9rem 1.05rem;display:grid;gap:.35rem}
+.fix h4{color:var(--blau)}
+.fix p{margin:0;font-size:.95rem;line-height:1.6;color:var(--ink);text-align:justify;hyphens:auto}
+.e.hi .fix{border-top-color:var(--rot)}
+.e.hi .fix h4{color:var(--rot)}
+ol.steps,ul.bul{margin:0;padding-left:1.2rem;display:grid;gap:.4rem}
+ol.steps li,ul.bul li{font-size:.95rem;line-height:1.55;color:var(--ink);text-align:justify;hyphens:auto}
+.src{font-family:"Source Sans 3",sans-serif;font-size:.8rem;color:var(--ink3);line-height:1.55;
+  padding:.7rem 0 0;border-top:1px solid var(--rule);background:none;margin-top:1rem}
+.src b{color:var(--ink3);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.66rem;display:block;margin-bottom:.15rem}
+
+/* Tabellen */
+.tbl-wrap{overflow-x:auto;margin-top:1.2rem;border-top:2px solid var(--blau)}
+table{border-collapse:collapse;width:100%;min-width:34rem}
+th,td{text-align:left;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--rule);font-size:.93rem;line-height:1.5;vertical-align:top}
+th{font-family:"Source Sans 3",sans-serif;font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--blau);font-weight:700}
+td{color:var(--ink2)} td:first-child{font-family:"Source Sans 3",sans-serif;font-weight:700;color:var(--ink);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums}
+
+/* Fuß */
+.foot{padding:2.2rem 0 0;color:var(--ink3);font-family:"Source Sans 3",sans-serif;font-size:.84rem;line-height:1.6;border-top:1px solid var(--rule);margin-top:2.6rem}
+.foot p{max-width:none}
+.foot ol{padding-left:1.2rem}
+.foot li{margin-bottom:.4rem}
+.sitefoot{margin-top:2rem;border-top:2px solid var(--blau);padding-top:1.2rem}
+.disclaim{color:var(--ink2)}
+.viadee-line{margin:.9rem 0 .35rem;color:var(--ink3)}
+a.viadee{display:inline-block;color:var(--ink2);width:150px}
+a.viadee:hover{color:var(--blau-tief)}
+.viadee-svg{width:100%;height:auto;display:block}
+
+/* Zum Buch */
+.buybox-sec{padding-bottom:0}
+.buybox{display:block;max-width:26rem;margin:0 auto;text-decoration:none}
+.buybox img{width:100%;height:auto;display:block;border:1px solid var(--rule);box-shadow:0 10px 26px -18px rgba(32,41,58,.5)}
+.buybox-cta{display:block;text-align:center;font-family:"Source Sans 3",sans-serif;font-weight:700;
+  color:var(--blau);padding:.7rem 0 .2rem;font-size:.95rem}
+.buybox:hover .buybox-cta{color:var(--blau-tief);text-decoration:underline}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media print{body{background:#fff}.wrap{box-shadow:none;margin:0;max-width:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="bookhead">
+  <div class="colhead"><span>VON VIBE CODING ZU AGENTIC ENGINEERING</span><span>ONLINE-ANHANG</span></div>
+  <div class="titlegrid">
+    <img class="cover" src="assets/cover.jpg" alt="Buchcover: Von Vibe Coding zu Agentic Engineering — Methoden für professionelle Softwareentwicklung mit KI, Thomas Raffelsieper, Carl Hanser Verlag. Rotes Cover mit dem Motiv eines geteilten Entwickler-Schreibtischs: links Chaos, rechts geprüfte Struktur." width="480" height="678">
+    <div class="titelei">
+      <p class="anhang-label">Errata &amp; Aktualisierungen zum Buch</p>
+      <h1>Von Vibe Coding zu<br>Agentic Engineering</h1>
+      <p class="subtitle">Methoden f&uuml;r professionelle Softwareentwicklung mit KI</p>
+      <p class="autorzeile">Thomas Raffelsieper &middot; Carl Hanser Verlag</p>
+      <ul class="meta">
+        <li>Erscheint am 11.&nbsp;September&nbsp;2026</li>
+        <li>ISBN 978-3-446-48854-0</li>
+        <li>E-Book inklusive</li>
+        <li>Stand dieser Seite: 26.&nbsp;August&nbsp;2026</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lede">Ein gedrucktes Buch ist ein Release ohne Hotfix-Kanal. Diese Seite ist der Hotfix-Kanal: Zwischen Redaktionsschluss und Erscheinen kam eine komplette Modellgeneration, das meistgenannte Werkzeug des Buchs bekam einen neuen Eigent&uuml;mer, ein Google-Produkt wurde eingestellt, und eine vielzitierte Studie erkl&auml;rte sich selbst f&uuml;r nicht mehr messf&auml;hig. Hier steht, was davon welche Buchstelle betrifft &mdash; strukturiert, transparent und gegen Quellen verifiziert, so wie das Buch es selbst verlangt.</p>
+</header>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Gebrauchsanweisung</div>
+    <h2>Vier Teile, unterschiedliche Dringlichkeit</h2>
+    <p>Nicht jede Abweichung ist ein Fehler. Diese Seite unterscheidet deshalb sauber zwischen dem, was in die Irre führt, und dem, was zum Redaktionsschluss schlicht anders war.</p>
+  </div>
+
+  <div class="guide">
+    <div class="guide-row"><span class="guide-k">A · Korrekturen</span><span class="guide-d">Aussagen, die heute in die Irre führen. Handlungsrelevant, mit Ersatztext.</span><span class="guide-w">vor dem Nachbauen</span></div>
+    <div class="guide-row"><span class="guide-k">B · Aktualisierungen</span><span class="guide-d">Zahlen und Stände, die zum Redaktionsschluss korrekt waren und inzwischen fortgeschrieben wurden.</span><span class="guide-w">beim Zitieren</span></div>
+    <div class="guide-row"><span class="guide-k">C · Nachträge</span><span class="guide-d">Was seit Redaktionsschluss dazugekommen ist und im Buch fehlt.</span><span class="guide-w">zum Weiterlesen</span></div>
+    <div class="guide-row"><span class="guide-k">D · Lebende Tabelle</span><span class="guide-d">Modell-, Preis- und Namensstände. Wird laufend fortgeschrieben.</span><span class="guide-w">bei Budgetfragen</span></div>
+  </div>
+
+  <div class="note">
+    <h4>Zur Verortung</h4>
+    <p>Diese Seite entstand vor dem Umbruch. Die Einträge verweisen deshalb auf Kapitel, Zwischenüberschrift und den zitierten Satzanfang. Seitenzahlen werden ergänzt, sobald der Umbruch vorliegt.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Teil A</div>
+    <h2>Korrekturen</h2>
+    <p>Acht Stellen, an denen das Buch heute in die Irre führen würde. Die erste ist sicherheitsrelevant.</p>
+  </div>
+
+  <div class="entries">
+
+    <article class="e hi">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-01</span><span class="pill p-hi">Sicherheitsrelevant</span></div>
+        <h3>Das Permission-Modell von Claude Code beschreibt nicht mehr die Voreinstellung</h3>
+        <div class="loc"><b>Kapitel 3</b>, „Das Permission-Modell: Kontrolle behalten“, S. 50 · <b>Kapitel 8</b>, „Claude Codes Sicherheitsmodell“, S. 145</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Im Standardmodus bittet Claude Code bei jeder potenziell destruktiven Aktion um Erlaubnis. Wenn es eine Datei ändern, einen Shell-Befehl ausführen oder einen MCP-Server nutzen möchte, sehen Sie eine Abfrage mit einer Beschreibung der geplanten Aktion.“ <span class="mono">(K3)</span></div>
+          <div class="q">„Wenn Claude Code eine Aktion ausführen will, die Auswirkungen auf Ihr System haben könnte […], muss der Agent zunächst Ihre Erlaubnis einholen.“ <span class="mono">(K8)</span></div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Seit dem <b>14. August 2026</b> ist der <b>Auto-Modus</b> die Standard-Berechtigungsstufe für neue Sessions auf den Plänen Pro, Max und Team. Er ersetzt die Rückfrage nicht durch blindes Vertrauen, sondern durch eine Prüfung: Ein separater Klassifikator bewertet jeden Shell-Befehl und jede Aktion. Claude fährt fort, solange die Aktion nicht als irreversibel, destruktiv oder außerhalb der Arbeitsumgebung eingestuft wird — dann fragt es weiterhin.</p>
+          <p>Der Auto-Modus existierte bereits zum Redaktionsschluss: als Research Preview seit März 2026, auf dem Pro-Plan seit Mai, auf Amazon Bedrock, Google Cloud und Microsoft Foundry seit Juni. Zum Standard wurde er erst im August.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum umgestellt wurde — und warum das Kapitel 8 stützt</h4>
+          <p>In einem kontrollierten Test mit 1.053 Personen erkannte der Auto-Modus <b>89 %</b> der gefährlichen Befehle. Die manuelle Freigabe durch Menschen erkannte <b>13,6 %</b>. Der Grund ist unbequem: Nutzerinnen und Nutzer bestätigen rund <b>97 %</b> aller Berechtigungsabfragen.</p>
+          <p>Damit bestätigt die Umstellung genau das, was Kapitel 10 aus dem SaaStr-Vorfall ableitet: <em>Guardrails müssen technisch sein, nicht sprachlich.</em> Eine Rückfrage, die reflexhaft weggeklickt wird, ist kein Guardrail — sie ist eine Quittung. Die praktische Konsequenz des Buchs bleibt gültig und wird wichtiger: Verlassen Sie sich nicht auf die Abfrage, sondern auf explizite <span class="mono">deny</span>-Regeln. Das Buch zeigt sie im selben Abschnitt; dieser Teil ist unverändert richtig.</p>
+        </div>
+        <div class="blk">
+          <h4>Was Sie konkret tun sollten</h4>
+          <ol class="steps">
+            <li><span class="mono">/permissions</span> zeigt in einer laufenden Session den aktiven Modus. Er lässt sich jederzeit umschalten; eine selbst gesetzte Voreinstellung wird durch die Umstellung nicht überschrieben.</li>
+            <li>Destruktive Operationen gehören in <span class="mono">deny</span>-Regeln, nicht in die Hoffnung auf eine Rückfrage — insbesondere <span class="mono">git push --force</span>, Löschbefehle und Produktionszugriffe.</li>
+            <li>Auf Enterprise-Plänen und bei API-Konten blieb der Auto-Modus in der ersten Ausrollphase optional. Prüfen Sie, was in Ihrer Organisation gilt.</li>
+          </ol>
+          <p style="margin-top:.9rem">Kapitel 3 bringt es auf eine Formel, die durch diese Umstellung nicht falsch, sondern nur eine Stufe wichtiger geworden ist: „Vertrauen ist gut, ein explizites <span class="mono">allow</span> ist besser.“ Seit dem 14. August gilt die Umkehrung genauso — Vertrauen ist gut, ein explizites <span class="mono">deny</span> ist besser.</p>
+        </div>
+        <div class="fix">
+          <h4>Vorschlag für den Nachdruck · Kapitel 3</h4>
+          <p>„Claude Code kennt mehrere Berechtigungsstufen. In der strengsten fragt der Agent vor jeder potenziell destruktiven Aktion nach. Voreingestellt ist auf den Abo-Plänen inzwischen der Auto-Modus: Ein separater Klassifikator prüft jede Aktion und lässt sie durchlaufen, solange sie nicht irreversibel, destruktiv oder außerhalb Ihres Arbeitsverzeichnisses ist — sonst fragt er weiterhin. Der Hintergrund dieser Umstellung ist aufschlussreich: In Anthropics eigenen Messungen erkannten Menschen bei manueller Freigabe nur einen Bruchteil der gefährlichen Befehle, weil sie fast jede Abfrage bestätigen. Was Sie wirklich schützt, sind deshalb nicht die Rückfragen, sondern die Regeln, die Sie vorher aufschreiben.“</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 32</a> · <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch, 9. August 2026</a></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-02</span><span class="pill p-med">Eigentümerwechsel</span></div>
+        <h3>Cursor gehört seit August 2026 zu SpaceX</h3>
+        <div class="loc"><b>Kapitel 2</b>, „Cursor: Der Platzhirsch mit dem größten Ökosystem“, S. 19 · mitbetroffen: Vorwort, Kapitel 7, Kapitel 11</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Gegründet 2022 von Anysphere, begann Cursor als schlanker VS-Code-Fork […] Heute, im Frühjahr 2026, gehört Cursor zu den prominentesten KI-Coding-Tools weltweit, mit mehr als einer Million Nutzer.“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>SpaceX hat Anysphere übernommen. Der Abschluss erfolgte Mitte August 2026 (Quellen nennen den 14. bzw. 15. August), das Volumen lag bei rund <b>60 Milliarden US-Dollar in Aktien</b> — die größte Übernahme eines risikokapitalfinanzierten Startups überhaupt. Cursor wird als Tochtergesellschaft in einer Division geführt, die nach der Fusion mit xAI unter dem Namen „SpaceXAI“ firmiert.</p>
+          <p>Für die tägliche Nutzung ändert sich zunächst wenig: Die Preisstufen (kostenlos / 20 / 60 / 200 US-Dollar) und der Modellzugang blieben unverändert. Am 6. August 2026 wurden die Preise einzelner Drittanbietermodelle im Token-Pool deutlich gesenkt.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum das zählt</h4>
+          <p>Das Kapitel bewertet Werkzeuge nach Funktionsumfang, Modellvielfalt und Preis. Für Leserinnen und Leser in regulierten Branchen ist die Eigentümerfrage aber ein eigenständiges Auswahlkriterium — wem gehört der Anbieter, wohin fließen Telemetrie und Code, welcher Konzernstrategie folgt das Produkt. Diese Dimension kommt im Buch nicht vor und sollte bei jeder Werkzeugentscheidung mitgeprüft werden.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://seekingalpha.com/news/4633335-spacex-completes-60b-acquisition-of-cursor-as-musk-led-firm-tries-to-gain-edge-in-ai-coding">Seeking Alpha</a> · <a href="https://devops.com/spacex-to-acquire-ai-coding-leader-cursor-in-60-billion-blockbuster-deal/">DevOps.com</a></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-03</span><span class="pill p-med">Produkt ersetzt</span></div>
+        <h3>Windsurf ist nicht umbenannt, sondern ersetzt worden</h3>
+        <div class="loc"><b>Kapitel 2</b>, S. 21, Hinweiskasten und Abschnitt „Windsurf: Der Herausforderer mit eigenem Modell“, Preistabelle · mitbetroffen: Vorwort (3×), Kapitel 5, Kapitel 7</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Kurz vor Drucklegung dieses Buchs (Juni 2026) hat Cognition Windsurf in Devin Desktop umbenannt; der Assistent Cascade wird seitdem unter dem Namen Devin Local weitergeführt. Funktionsumfang und Preise blieben zunächst unverändert.“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Der Kasten stimmt in jedem Detail — er greift nur zu kurz. Der Wechsel am <b>2. Juni 2026</b> war keine Umbenennung, sondern ein Kategoriewechsel. Devin Desktop baut auf der IDE-Grundlage von Windsurf auf, verlagert den Schwerpunkt aber vom Editor zur Steuerzentrale:</p>
+          <ul class="bul">
+            <li><b>Agent Command Center</b> — eine Kanban-Ansicht, über die lokale und Cloud-Agenten gemeinsam verwaltet werden. Das ist die Standardoberfläche, nicht mehr der Editor.</li>
+            <li><b>Spaces</b> — geteilter Kontext zwischen Agenten, mit gruppierten Sessions, Pull Requests und Dateien.</li>
+            <li><b>Agent Client Protocol (ACP)</b> — ein offenes Protokoll, mit dem beliebige kompatible Agenten in beliebigen kompatiblen Editoren laufen.</li>
+          </ul>
+          <p>Bestandsnutzer erhielten das Update automatisch; Plan, Einstellungen und Erweiterungen wurden übernommen.</p>
+        </div>
+        <div class="blk">
+          <h4>Konsequenz für die Lektüre</h4>
+          <p>Der Windsurf-Abschnitt beschreibt korrekt ein Produkt, das es in dieser Form nicht mehr gibt. Lesen Sie ihn als Beschreibung der Editor-Kategorie — der Vergleich Cascade gegen Cursors Agent Mode bleibt lehrreich —, nicht als Kaufberatung.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://devin.ai/blog/windsurf-is-now-devin-desktop">Devin: Windsurf is now Devin Desktop</a> · <a href="https://docs.devin.ai/desktop/devin-desktop-faq">Devin Desktop FAQ</a></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-04</span><span class="pill p-med">Werkzeug eingestellt</span></div>
+        <h3>Gemini CLI ist eingestellt — der Abschnitt zu GEMINI.md beschreibt ein totes Werkzeug</h3>
+        <div class="loc"><b>Kapitel 2</b>, „Die Macht der Konfigurationsdateien“, S. 30, Absatz beginnend „Google hat mit GEMINI.md …“</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Google hat mit GEMINI.md ein paralleles Format für Gemini CLI eingeführt; Gemini CLI kann AGENTS.md zusätzlich einlesen, allerdings nur per Konfiguration — standardmäßig liest es nur GEMINI.md.“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Gemini CLI und die Gemini-Code-Assist-Erweiterungen haben am <b>18. Juni 2026</b> aufgehört, Anfragen von Endnutzern zu bedienen. Nachfolger ist die <b>Antigravity CLI</b>, eine in Go geschriebene Terminal-Oberfläche, die sich mit der Desktop-Anwendung Antigravity 2.0 einen gemeinsamen Agent-Harness teilt. Enterprise-Kunden mit Gemini-Code-Assist-Lizenzen behalten den Zugang.</p>
+          <p><b>Nicht betroffen:</b> Kapitel 3 nennt den Übergang bereits korrekt („geht im Juni 2026 in Antigravity CLI über“). Dort ist keine Korrektur nötig.</p>
+          <p><b>Randnotiz:</b> Die Torvalds-Anekdote in Kapitel 1 ist dadurch besser gealtert als gedacht — aus der „agent-first Coding-Umgebung“ von November 2025 ist Googles gesamte Agentenplattform geworden.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx">Virtualization Review</a> · <a href="https://ostechnix.com/google-is-replacing-gemini-cli-with-google-antigravity/">OSTechNix</a></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-05</span><span class="pill p-med">Codebeispiel</span></div>
+        <h3>Das Listing der GitHub Action nennt ein abgekündigtes Modell</h3>
+        <div class="loc"><b>Kapitel 3</b>, „Fortgeschrittene Techniken: Headless Mode und CI/CD-Integration“, YAML-Listing, S. 64</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <pre>claude_args: "--max-turns 10 --model claude-sonnet-4-6"</pre>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Der Alias <span class="mono">claude-sonnet-4-6</span> verweist auf eine Modellgeneration, die nicht mehr die aktuelle ist. Wer das Listing wörtlich übernimmt — und Codelistings werden wörtlich übernommen —, riskiert einen Fehlschlag im CI-Lauf.</p>
+          <pre># Entweder den Alias weglassen und den Kontostandard nutzen:
+claude_args: "--max-turns 10"
+
+# oder den jeweils aktuellen Alias einsetzen, siehe Teil D:
+claude_args: "--max-turns 10 --model &lt;aktueller-alias&gt;"</pre>
+          <p>Für neue Sessions lässt sich das Standardmodell inzwischen über die Umgebungsvariable <span class="mono">ANTHROPIC_DEFAULT_MODEL</span> setzen — in CI-Umgebungen die wartungsärmere Variante, weil der Alias dann an genau einer Stelle steht.</p>
+        </div>
+        <div class="fix">
+          <h4>Regel für alle weiteren Listings</h4>
+          <p>In ein Codebeispiel, das jahrelang in einem Buch steht, gehört kein Modellname. Das gilt auch für die Neuauflage.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quelle</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 34</a></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-06</span><span class="pill p-med">Projektlage</span></div>
+        <h3>Die Projektlage von GSD ist im Buch unvollständig dargestellt</h3>
+        <div class="loc"><b>Kapitel 6</b>, „Von V1 zu V2: Prompts werden zur Plattform“, S. 105 · mitbetroffen: Quellenverzeichnis, Kapitel 7</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„GSD V1 (ursprünglich github.com/gsd-build/get-shit-done, seit Mai 2026 als gsd-core unter github.com/open-gsd weiterentwickelt) …“</div>
+        </div>
+        <div class="blk">
+          <h4>Bestätigt</h4>
+          <p>Die technischen Angaben des Buchs stimmen. Beide abgedruckten Installationsbefehle sind weiterhin die offiziell empfohlenen, und auch die Zwei-Linien-Darstellung trifft zu:</p>
+          <pre>npx @opengsd/gsd-core@latest   # V1 / Core
+npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
+          <p>Beide Repositories werden aktiv gepflegt und wurden zuletzt am 24. August 2026 aktualisiert. <span class="mono">gsd-core</span> ist mit rund 8.700 Sternen das Flaggschiff, <span class="mono">gsd-pi</span> liegt bei rund 1.150.</p>
+        </div>
+        <div class="blk">
+          <h4>Was fehlt: der Anlass</h4>
+          <ul class="bul">
+            <li>Seit dem <b>1. April 2026</b> gibt es keinen Kontakt mehr zum ursprünglichen Maintainer (TÂCHES); dessen Social-Media-Konten sind gelöscht oder nicht erreichbar.</li>
+            <li>Der mit dem Projekt verbundene <span class="mono">$GSD</span>-Token wurde öffentlich mit einem <b>Rug-Pull</b> in Verbindung gebracht.</li>
+            <li>Im <b>Mai 2026</b> veröffentlichten die verbliebenen Maintainer eine Continuity-Ankündigung und verlagerten die Entwicklung unter die Organisation <span class="mono">open-gsd</span>. Das ursprüngliche Repository ist nicht mehr die offizielle Heimat der Entwicklung.</li>
+          </ul>
+        </div>
+        <div class="fix">
+          <h4>Sicherheitsrelevanter Nachtrag</h4>
+          <p>Die Maintainer weisen ausdrücklich darauf hin, für neue Installationen <b>nicht</b> die alten Paketnamen zu verwenden. Wer noch ein Paket aus der Vorgängerzeit installiert hat, sollte es über <span class="mono">npm uninstall</span> entfernen — ausdrücklich <b>nicht</b> über den projekteigenen Uninstall-Befehl, um kein potenziell nicht vertrauenswürdiges Skript auszuführen.</p>
+        </div>
+        <div class="tbl-wrap" style="margin-top:0;border-top:0">
+          <table>
+            <thead><tr><th>Alt — nicht mehr verwenden</th><th>Neu</th></tr></thead>
+            <tbody>
+              <tr><td><span class="mono">get-shit-done-cc</span></td><td><span class="mono">@opengsd/gsd-core</span></td></tr>
+              <tr><td><span class="mono">gsd-pi</span> (ungescoped)</td><td><span class="mono">@opengsd/gsd-pi</span></td></tr>
+              <tr><td><span class="mono">@gsd-build/sdk</span></td><td><span class="mono">@opengsd/gsd-sdk</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="blk">
+          <p><b>Warum das in eine Errata gehört:</b> Das Buch empfiehlt GSD als eines von drei Frameworks. Wer der Empfehlung folgt und den Projektnamen sucht, stößt zuerst auf die Kontroverse und nicht auf die Empfehlung. Und wer einer älteren Anleitung gefolgt ist, hat womöglich ein Paket installiert, das er entfernen sollte.</p>
+          <p><b>Unberührt bleibt alles Inhaltliche.</b> Context Rot, die Iron Rule, die Hierarchie Milestone → Slice → Task, Wave Execution, Crash Recovery, Stuck Detection, Verifikations-Gates und Kostendeckel sind Muster, keine Produkteigenschaften. Sie gelten unabhängig davon, wer das Repository verwaltet — und sie sind 2026 dabei, Branchenstandard zu werden.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/open-gsd">Open GSD</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/109">Discussion #109: Why the fork</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/433">Discussion #433: Installation Guide</a></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-07</span><span class="pill p-med">Studienlage</span></div>
+        <h3>Die METR-Folgestudie liefert kein belastbares Ergebnis — nach METRs eigener Einschätzung</h3>
+        <div class="loc"><b>Kapitel 10</b>, „Die Synthese: Vibe Coding ist ein Werkzeug, kein Wunder“, S. 185</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„… auch wenn METRs Folgemessung vom Februar 2026 für neuere Tools wieder vorsichtige Geschwindigkeitsgewinne nahelegt.“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Die Richtung der Buchaussage stimmt — die Schätzwerte deuten tatsächlich auf vorsichtige Geschwindigkeitsgewinne. Was die Fußnote nicht transportiert: METR selbst erklärt die Messung für <b>nicht belastbar</b>.</p>
+          <p>Im Einzelnen: METR hat das Folgeexperiment durchgeführt, die Daten aber am 24. Februar 2026 als „unreliable signal“ eingestuft. Die Schätzwerte: Wiederholer aus der Erststudie rund <b>18 % schneller</b>, wobei das Konfidenzintervall von 38 % schneller bis 9 % <em>langsamer</em> reicht; neu Rekrutierte rund <b>4 % schneller</b> (15 % schneller bis 9 % langsamer). Beide Intervalle schließen die Null ein.</p>
+          <p>Drei Gründe nennt METR für die Unzuverlässigkeit — und der erste ist selbst der interessanteste Befund:</p>
+          <ol class="steps">
+            <li><b>Deutlich mehr Entwickler verweigerten die Teilnahme, weil sie nicht ohne KI arbeiten wollen.</b> Die Kontrollgruppe erodiert; wer bleibt, ist nicht mehr repräsentativ.</li>
+            <li>Die Vergütung sank von 150 auf 50 Dollar pro Stunde — ein zweiter Selektionseffekt.</li>
+            <li><b>Die Zeitmessung bricht zusammen, wenn Entwickler mehrere Agenten parallel laufen lassen.</b> „Zeit an einer Aufgabe“ ist keine wohldefinierte Größe mehr, sobald drei Agenten gleichzeitig arbeiten, während der Mensch etwas anderes tut.</li>
+          </ol>
+          <p>Punkt 3 ist für dieses Buch fast der wichtigste: Nicht nur die Antwort verändert sich — die Frage „Wie schnell ist ein Entwickler?“ verliert ihre Messbarkeit, sobald Arbeit parallel delegiert wird. METR entwickelt deshalb ein neues Studiendesign.</p>
+        </div>
+        <div class="fix">
+          <h4>Vorschlag für den Nachdruck</h4>
+          <p>„Die METR-Studie zeigt, dass Produktivitätsgewinne nicht garantiert sind. Die Folgemessung von 2026 deutet zwar auf vorsichtige Gewinne, aber METR selbst stuft sie als nicht belastbar ein — aus einem Grund, der mehr über die Gegenwart sagt als jede Prozentzahl: Es fanden sich kaum noch Entwickler, die für die Kontrollgruppe ohne KI arbeiten wollten, und die Zeitmessung selbst versagt, sobald mehrere Agenten parallel laufen. Die Frage, ob KI-Werkzeuge Entwickler schneller machen, wird gerade unbeantwortbar — nicht weil die Antwort unklar wäre, sondern weil das Gegenexperiment verschwindet.“</p>
+        </div>
+      </div>
+      <div class="src"><b>Quelle</b><a href="https://metr.org/blog/2026-02-24-uplift-update/">METR: We are Changing our Developer Productivity Experiment Design</a></div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-08</span><span class="pill p-low">Empfehlung</span></div>
+        <h3>Die Empfehlung zu Aider ist überholt</h3>
+        <div class="loc"><b>Kapitel 2</b>, „Aider: Das Werkzeug der Power-User“, Schlussabsatz, S. 24 · mitbetroffen: „Die Vergleichsmatrix“</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Wenn Sie sich in dieser Beschreibung wiedererkennen, sollten Sie Aider zumindest ausprobieren. Es könnte Ihr neues Lieblingswerkzeug werden.“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Aider ist weiterhin gepflegt und funktionsfähig, hat aber deutlich an Tempo verloren: seit August 2025 kein getaggter Release, letzter Repository-Push im Mai 2026. Vor allem ist die Modellempfehlung der Projektdokumentation nicht auf dem Stand aktueller Frontier-Modelle — dort stehen weiterhin Gemini 2.5 Pro, Claude 3.7 Sonnet, o3/o4-mini und GPT-4.1.</p>
+          <p>Die Einordnung des Buchs — schlanker Klassiker mit vorbildlicher Git-Integration, der die Konvention der atomaren Commits geprägt hat — bleibt richtig. Die Empfehlung an Einsteiger ist es nicht mehr. Wer heute einen quelloffenen Terminal-Agenten sucht, findet in OpenCode das aktivere Projekt.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quelle</b><a href="https://www.morphllm.com/comparisons/opencode-vs-aider">Morph: OpenCode vs Aider, Juni 2026</a></div>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Teil B</div>
+    <h2>Aktualisierungen</h2>
+    <p>Diese Angaben waren zum Redaktionsschluss korrekt. Sie stehen hier, weil sie beim Zitieren datiert werden sollten — nicht, weil das Buch sich geirrt hätte.</p>
+  </div>
+
+  <div class="entries">
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-01</span><span class="pill p-low">Kapitel 3 · S. 54</span></div>
+        <h3>Modellgeneration</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Das Buch nennt Claude Opus 4.7 und 4.8 mit ihren Benchmarkwerten und beschreibt ein Kontextfenster von 200.000 Token mit optionaler Erweiterung auf eine Million. Inzwischen ist die Claude-5-Familie da:</p>
+          <ul class="bul">
+            <li><b>Claude Sonnet 5</b> — Ende Juni 2026, Standardmodell für Pro, Team Standard und Enterprise-Plätze, natives Kontextfenster von einer Million Token, adaptives Reasoning standardmäßig aktiv.</li>
+            <li><b>Claude Opus 5</b> — 24. Juli 2026, Standard-Opus-Modell in Claude Code, ebenfalls eine Million Token Kontext. Der Preis blieb gegenüber Opus 4.8 unverändert; ein Fast Mode ist zu 10 / 50 US-Dollar je Million Token verfügbar.</li>
+          </ul>
+          <p><b>Die eigentliche Nachricht ist nicht die neue Zahl, sondern die Taktzahl:</b> vier Frontier-Veröffentlichungen in weniger als zwei Monaten. Ein gedrucktes Buch kann diesem Rhythmus nicht folgen. Was das Kapitel dazu selbst schreibt, bleibt uneingeschränkt gültig: <em>„Benchmarks messen das, was messbar ist, nicht unbedingt das, was wichtig ist.“</em></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-02</span><span class="pill p-low">Kapitel 9 · S. 159</span></div>
+        <h3>OpenClaw hat eine Stiftung — die offene Frage des Kapitels ist beantwortet</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Das Kapitel endet mit der Frage, ob die Zusicherung hält, OpenClaw bleibe nach Steinbergers Wechsel zu OpenAI quelloffen und unabhängig.</p>
+          <p>Am <b>8. Juli 2026</b> wurde die <b>OpenClaw Foundation</b> als gemeinnützige Stiftung gegründet. Das Projekt bleibt unter MIT-Lizenz, hat bezahlte Maintainer und einen neutralen Träger. Über zwei Dutzend Core-Maintainer arbeiten daran, darunter je vier von Nvidia und Microsoft, je drei von OpenAI und Tencent sowie Beteiligte von Atlassian, Xiaomi, Red Hat und Hugging Face. Hauptsponsoren sind OpenAI, GitHub und Nvidia.</p>
+          <ul class="bul">
+            <li><b>Sternzahl:</b> Das Buch nennt 250.000 mit dem ehrlichen Zusatz, dass die Zahl schwankt. Inzwischen über 375.000. Aussagekräftiger ist ohnehin eine andere Größe: rund 4,5 Millionen neue selbstgehostete Instanzen pro Woche.</li>
+            <li><b>Sicherheitsinfrastruktur:</b> Der Satz „kein Bug-Bounty-Programm, kein dediziertes Sicherheitsteam und kein formaler Audit-Prozess“ beschreibt den Zustand vor der Professionalisierung. Das Projekt hat seither auf Zuverlässigkeit umgestellt — Agent-Recovery, Audit-Trails, MCP-Validierung, LTS-Roadmap. Die grundsätzliche Sicherheitskritik bleibt berechtigt.</li>
+          </ul>
+          <p><b>Die Pointe hat sich verbessert:</b> Big Tech finanziert inzwischen die quelloffene Alternative zu Big Tech. Ob das die Unabhängigkeit sichert oder nur eleganter verpackt, ist die Frage, die an die Stelle der alten tritt.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://thenewstack.io/openclaw-foundation-nonprofit-status/">The New Stack</a> · <a href="https://steipete.me/posts/2026/openclaw">Peter Steinberger</a></div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-03</span><span class="pill p-low">Kapitel 2 · S. 25 ff.</span></div>
+        <h3>Marktzahlen der No-Code-Plattformen</h3>
+      </div>
+      <div class="e-body">
+        <div class="tbl-wrap" style="margin-top:0">
+          <table>
+            <thead><tr><th>Plattform</th><th>Im Buch</th><th>Stand August 2026</th></tr></thead>
+            <tbody>
+              <tr><td>Lovable</td><td class="num">400 Mio. $ ARR, Bewertung 6,6 Mrd. $</td><td class="num">rund 500 Mio. $ ARR, Bewertung rund 13,2 Mrd. $ — in sechs Monaten verdoppelt</td></tr>
+              <tr><td>Replit</td><td class="num">50 Mio.+ Nutzer, 9 Mrd. $ Bewertung</td><td class="num">Bewertung unverändert; rund 525 Mio. $ ARR, Unternehmensziel 1 Mrd. $ zum Jahresende (nicht extern geprüft)</td></tr>
+              <tr><td>Bolt.new</td><td>keine Zahlen genannt</td><td class="num">rund 40 Mio. $ ARR bei rund 700 Mio. $ Bewertung, profitabel — deutlich hinter Lovable und Replit</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="blk"><p>Die Einordnungen des Buchs — Lovable als Schönheitskönig mit tiefer Supabase-Integration, Bolt als Sprinter ohne Plan-Schritt, Replit als All-in-One-Plattform für Nicht-Programmierer — bleiben zutreffend. Nur die Größenverhältnisse haben sich verschoben.</p></div>
+      </div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-04</span><span class="pill p-low">Kap. 2 S. 24 · Kap. 5 S. 94 · Kap. 7 S. 116 f.</span></div>
+        <h3>Projektgrößen der Open-Source-Werkzeuge</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <ul class="bul">
+            <li><b>OpenCode:</b> Das Buch nennt über 160.000 GitHub-Sterne (Stand Mai 2026). Inzwischen über 170.000.</li>
+            <li><b>Spec Kit:</b> Das Buch nennt „über 80 Erweiterungen“ — an <b>vier</b> Stellen: als Abschnittsüberschrift in Kapitel 5 (S. 94) und damit auch im Inhaltsverzeichnis, im Fließtext sowie in der Vergleichstabelle in Kapitel 7 (S. 116 f.). Eine volatile Zahl in einer Überschrift wandert automatisch ins Inhaltsverzeichnis — eine Lehre für Band 2. Belastbarer sind heute andere Kennzahlen: über 120.000 GitHub-Sterne und Version 0.11.0 vom Juni 2026 mit Unterstützung für mehr als 30 KI-Agenten.</li>
+            <li><b>BMAD:</b> Das Buch beschreibt Version 6 mit Skills Architecture und BMad Builder. Aktuell ist die 6.8er-Linie; eine Version 7 ist angekündigt, aber ohne Termin. <b>Neu und im Buch nicht enthalten:</b> Seit Juli 2026 gibt es einen dritten Weg von der Aufgabenbeschreibung zum eingecheckten Code — neben der vollen Methode und Quick Dev jetzt den <b>BMad Loop</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-05</span><span class="pill p-low">Kapitel 1 S. 9 · Kapitel 10</span></div>
+        <h3>Entwicklerumfragen — dieselbe Erhebung, aber eine schärfere Kennzahl</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Das Buch zitiert aus der Stack-Overflow-Erhebung 2025 die Werte 84 % Nutzung, 69 % berichtete Produktivitätsgewinne, 46 % fehlendes Vertrauen in die Genauigkeit und 66 % Frustration über „fast richtige“ Lösungen. Alle vier bleiben korrekt.</p>
+          <p><b>Derselben Erhebung</b> ist aber eine Kennzahl zu entnehmen, die das Bild schärfer fasst als die im Buch zitierte: Nur <b>29 %</b> der Befragten gaben an, KI-Ergebnissen zu vertrauen — <b>elf Prozentpunkte weniger als 2024</b>. Stack Overflow hat diesen Befund im Februar 2026 unter dem Titel „Closing the developer AI trust gap“ selbst zum Thema gemacht.</p>
+          <p><b>Das Leitmotiv:</b> Nutzung steigt, Vertrauen fällt — belegt als Trend von 2024 auf 2025, nicht als Momentaufnahme. Diese Schere ist als Befund haltbarer als jeder Einzelwert und trägt die Argumentation von Kapitel 10 besser als die Misstrauens-Quote allein.</p>
+          <p><b>Zur Einordnung:</b> Eine publizierte Nachfolgeerhebung gibt es noch nicht — die Umfrage 2026 lief im Sommer an, ihre Ergebnisse erscheinen voraussichtlich erst nach dem Buch. Sekundärquellen, die die genannten Werte bereits als „Survey 2026“ führen, verwechseln das Erhebungsjahr; diese Seite wird aktualisiert, sobald die echten 2026er-Zahlen vorliegen.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quelle</b><a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/">Stack Overflow: Closing the developer AI trust gap (18. Februar 2026)</a></div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-06</span><span class="pill p-low">Kapitel 11 · S. 197</span></div>
+        <h3>EU AI Act — die Prognose des Buchs ist eingetreten</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Kapitel 11 schreibt, die Hochrisiko-Pflichten griffen „nach der im Mai 2026 vereinbarten Fristverschiebung im Wesentlichen ab Ende 2027“. Das lässt sich präzisieren, und zwar bestätigend.</p>
+          <p>Der Digital Omnibus wurde am 24. Juli 2026 im Amtsblatt veröffentlicht und trat am 27. Juli 2026 in Kraft — sechs Tage vor der ursprünglichen Frist. Die Hochrisiko-Pflichten nach Annex III verschieben sich auf den <b>2. Dezember 2027</b>, die nach Annex I auf den <b>2. August 2028</b>. Die Transparenzpflichten nach Artikel 50 gelten unverändert seit August 2026.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quelle</b><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/">Rat der Europäischen Union</a></div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">A-07</span><span class="pill p-low">Kapitel 11 · S. 188</span></div>
+        <h3>Karpathys Begriffsverschiebung — bestätigt, und jetzt zitierbar</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Kapitel 11 schreibt, Karpathys Antwort auf die Kritik am Begriff „Vibe Coding“ sei „im Februar 2026, ebenfalls via Social Media“ gekommen. <b>Das ist korrekt.</b> Der Beitrag auf X fiel fast genau auf den ersten Jahrestag der ursprünglichen Begriffsprägung vom Februar 2025.</p>
+          <p>Was sich ergänzen lässt, ist die Belegstelle. Karpathys Formulierung im Wortlaut:</p>
+          <div class="q">„Personally, my current favorite [is] ‚agentic engineering‘: ‚agentic‘ because the new default is that you are not writing the code directly 99 % of the time, you are orchestrating agents who do and acting as oversight — ‚engineering‘ to emphasize that there is an art &amp; science and expertise to it.“</div>
+          <p style="margin-top:.9rem">Die breit rezipierte Zuspitzung — „vibe coding ist passé“ — fiel erst später: beim Fireside Chat auf Sequoias AI-Ascent-Veranstaltung am <b>30. April 2026</b>. Dort stammt auch die Formel, die den Unterschied am schärfsten fasst:</p>
+          <div class="q">„Vibe coding raises the floor. It lets almost anyone create software by describing what they want. […] Agentic engineering raises the ceiling. It is the professional discipline of coordinating fallible agents while preserving correctness, security, taste, and maintainability.“</div>
+        </div>
+        <div class="fix">
+          <h4>Für den Nachdruck</h4>
+          <p>Das Februar-Zitat ist die beste verfügbare Belegstelle für die zentrale These von Kapitel 11 und ließe sich als Fußnote ergänzen. Die April-Formel „raises the floor / raises the ceiling“ wäre darüber hinaus ein starker Kapitelabschluss — sie sagt in zwei Sätzen, was das Buch über elf Kapitel entwickelt.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy: Sequoia Ascent 2026 summary</a> · <a href="https://thenewstack.io/vibe-coding-is-passe/">The New Stack: Vibe coding is passé</a></div>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Teil C</div>
+    <h2>Nachträge</h2>
+    <p>Kein Fehler im Buch, aber ein Nachtrag für alle, die ein Kapitel als Einstieg genutzt haben.</p>
+  </div>
+
+  <div class="entries">
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">N-01</span><span class="pill p-low">Kapitel 3</span></div>
+        <h3>Claude Code — was das Kapitel noch nicht abbildet</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Die Konzepte des Kapitels — Tool-System, agentische Suche, Kontextverwaltung, MCP, Hooks, Sub-Agenten, Skills, Headless-Betrieb — sind unverändert gültig. Gegenüber dem im Kapitel beschriebenen Stand (Frühjahr 2026) sind vor allem Bausteine für Arbeit mit mehreren Agenten gleichzeitig dazugekommen; einige davon erschienen in den Wochen um den Redaktionsschluss, die meisten danach:</p>
+          <ul class="bul">
+            <li><b>Sitzungsübergreifende Kommunikation</b> — Claude-Code-Sessions können einander Nachrichten schicken, statt dass Sie einen Befund zweimal erklären. Mit <span class="mono">@</span> erwähnen Sie eine andere Session namentlich.</li>
+            <li><b>Fork-Modus standardmäßig aktiv</b> — Claude übergibt eine Nebenaufgabe an einen Sub-Agenten, der den vollen Gesprächsverlauf erbt.</li>
+            <li><b>Sub-Agenten laufen standardmäßig im Hintergrund</b> und können eigene Sub-Agenten starten (gedeckelt bei fünf Ebenen).</li>
+            <li><b>Dynamische Workflows</b> — ein Skript, das Claude selbst schreibt, orchestriert dutzende bis hunderte Sub-Agenten.</li>
+            <li><b>Agent View</b> (<span class="mono">claude agents</span>) — eine Übersicht über alle Sessions: was läuft, was wartet auf Sie, was ist fertig.</li>
+            <li><b>Selbstgehostete Umgebungen</b> — Cloud-Sessions auf eigener Infrastruktur, offene Beta für Team und Enterprise.</li>
+          </ul>
+          <p>Für das Sicherheitskapitel relevant: <span class="mono">/code-review</span> läuft als Hintergrund-Sub-Agent; ein Security-Plugin führt einen Multi-Agenten-Schwachstellenscan durch und wandelt ausgewählte Befunde in Patches; ein security-guidance-Plugin prüft Claudes Änderungen laufend während der Arbeit.</p>
+          <p>Weiter: Computer Use im CLI, eingebauter Browser in der Desktop-App, <span class="mono">/doctor</span> als Setup-Diagnose, <span class="mono">--safe-mode</span> zur Fehlersuche ohne Anpassungen, <span class="mono">fallbackModel</span> für bis zu drei Ausweichmodelle.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">N-02</span><span class="pill p-low">Kapitel 2 und 11</span></div>
+        <h3>Die Konvergenz läuft weiter — auf Multi-Agenten-Steuerung zu</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Kapitel 2 endet mit der These, alle Werkzeuge würden agentisch. Das hat sich bestätigt und ist bereits eine Stufe weiter: Alle Werkzeuge werden zu <b>Kommandozentralen für mehrere Agenten</b>.</p>
+          <ul class="bul">
+            <li>Cursor v3 mit acht parallel arbeitenden Agenten</li>
+            <li>Google Antigravity 2.0 mit Agent Teams und Agent Manager</li>
+            <li>GitHub Copilot mit Multi-Agenten-Workspace, einem neuen Agenten auf Basis des Copilot SDK, Agent Skills und MCP im Code Review (allgemein verfügbar seit Ende Juli 2026) sowie Copilot in Slack</li>
+            <li>Devin Desktop mit dem Agent Command Center</li>
+            <li>Dazu eine Werkzeugklasse, die es zum Redaktionsschluss noch nicht als Kategorie gab: eigenständige Orchestratoren wie amux, Claude Squad, workmux und Microsoft Conductor</li>
+          </ul>
+          <p><b>Und die nötige Gegenevidenz:</b> Google Research hat im Januar 2026 unter dem Titel „Towards a Science of Scaling Agent Systems“ (Kim et al.) 180 Agentenkonfigurationen ausgewertet — fünf Architekturen über vier Benchmarks und drei Modellfamilien, bei konstant gehaltenen Tools, Prompts und Token-Budgets. Gegenüber einem Einzelagenten verstärken <b>unabhängig parallel laufende</b> Agenten Fehler um das <b>17,2-Fache</b>; zentrale Koordination begrenzt die Verstärkung auf das 4,4-Fache. Zentral koordinierte Multi-Agenten-Setups verbessern parallelisierbare Aufgaben um bis zu 81 % — aber auf Aufgaben mit strikt sequenziellen Abhängigkeiten verschlechterte <b>jede</b> getestete Multi-Agenten-Architektur das Ergebnis, um 39 bis 70 %.</p>
+          <p>Parallelität ist damit keine Einstellung, sondern eine Entscheidung — und zwar eine, die von der Struktur der Aufgabe abhängt.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">Google Research Blog</a> · <a href="https://arxiv.org/html/2512.08296v1">arXiv: Towards a Science of Scaling Agent Systems</a> · <a href="https://venturebeat.com/orchestration/research-shows-more-agents-isnt-a-reliable-path-to-better-enterprise-ai">VentureBeat</a></div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">N-03</span><span class="pill p-low">Kapitel 10</span></div>
+        <h3>Die Delegationslücke</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Anthropics Agentic Coding Trends Report 2026 liefert die Zahl, die das Kritikkapitel gebraucht hätte: Entwicklerinnen und Entwickler setzen KI in <b>rund 60 %</b> ihrer Arbeit ein, können aber nur <b>0 bis 20 %</b> ihrer Aufgaben vollständig delegieren.</p>
+          <p>Der Bericht liest das nicht als Scheitern, sondern als Beschreibung des Berufs: Einrichten, Prompten, Beaufsichtigen, Validieren und Urteilen sind nicht die Reibung auf dem Weg zur Automatisierung, sondern die Arbeit selbst. Das ist die empirische Fassung dessen, was das Buch über elf Kapitel argumentiert.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">N-04</span><span class="pill p-low">Kapitel 3 und 8</span></div>
+        <h3>MCP hat eine neue Spezifikation — und einen behördlichen Sicherheitsleitfaden</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Kapitel 3 beschreibt MCP über stdio und HTTP und weist zu Recht darauf hin, dass die frühen Referenz-Server archiviert sind. Seit dem <b>28. Juli 2026</b> gibt es eine neue Spezifikation: staatenloser Protokollkern, Multi-Round-Trip-Anfragen, Header-basiertes Routing, cachebare Listenergebnisse, gehärtete Autorisierung und ein formales Extensions-Framework.</p>
+          <p>Größenordnung des Ökosystems: rund 97 Millionen SDK-Downloads pro Monat, über 5.800 Server. Für das Sicherheitskapitel wichtig: Zu MCP existiert inzwischen ein behördlicher Sicherheitsleitfaden (Juni 2026) — Prompt Injection über Server- und Werkzeugbeschreibungen ist die dominante neue Angriffsklasse und im Buch nur mit einem Warnkasten vertreten.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">N-05</span><span class="pill p-low">Kapitel 2</span></div>
+        <h3>AGENTS.md hat einen Träger</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Der Abschnitt in Kapitel 2 — inklusive der ernüchternden ETH-Befunde zum tatsächlichen Nutzen von Kontextdateien — bleibt inhaltlich unverändert richtig. Ergänzend: AGENTS.md wird inzwischen von der Agentic AI Foundation unter dem Dach der Linux Foundation betreut, liegt in über 60.000 Repositories und wird von mehr als einem Dutzend Werkzeugen gelesen.</p>
+          <p>Die Aussage des Buchs, dass Claude Code AGENTS.md nicht direkt liest und der empfohlene Weg der <span class="mono">@AGENTS.md</span>-Import aus der CLAUDE.md ist, gilt weiterhin.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Teil D</div>
+    <h2>Lebende Tabelle</h2>
+    <p>Stand 24. August 2026. Dieser Teil wird fortgeschrieben; die übrigen Teile bleiben als Korrekturprotokoll stehen.</p>
+  </div>
+
+  <h4 style="margin-top:1.6rem">Modelle in Claude Code</h4>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Rolle</th><th>Aktuell</th><th>Standard für</th></tr></thead>
+      <tbody>
+        <tr><td>Höchste Leistungsklasse</td><td>Claude Opus 5 (seit 24. Juli 2026)</td><td>Max, Team Premium</td></tr>
+        <tr><td>Ausgewogene Klasse</td><td>Claude Sonnet 5 (seit Ende Juni 2026)</td><td>Pro, Team Standard, Enterprise</td></tr>
+        <tr><td>Kontextfenster</td><td>1 Mio. Token nativ bei beiden</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="font-size:.9rem;color:var(--ink-3);margin-top:.9rem">Der jeweils aktuelle Alias steht in der offiziellen Dokumentation. Setzen Sie ihn über <span class="mono">ANTHROPIC_DEFAULT_MODEL</span> an genau einer Stelle, nicht in jedem Skript.</p>
+
+  <h4 style="margin-top:2.2rem">Preisverhältnisse</h4>
+  <p class="prose" style="margin-top:.7rem;color:var(--ink-2)">Statt Beträgen hier das, was sich als stabil erwiesen hat: <b>Ausgabe-Token kosten etwa das Fünffache von Eingabe-Token.</b> Dieses Verhältnis hat vier Modellgenerationen überstanden. Die absoluten Beträge haben sich mehrfach geändert — sie stehen bei den Anbietern.</p>
+  <p class="prose" style="color:var(--ink-2)">Für Claude Code gilt weiterhin die Struktur, die Kapitel 3 beschreibt: Abo mit Kontingent (Pro und zwei Max-Stufen) oder nutzungsbasierte API-Abrechnung, dazu Wochenlimits auf den Abo-Plänen. Auch Cursor und GitHub Copilot arbeiten mit dieser Mischform; Copilot hat zum 1. Juni 2026 auf nutzungsbasierte AI Credits umgestellt, was das Buch bereits vermerkt.</p>
+
+  <h4 style="margin-top:2.2rem">Werkzeuge, die im Buch anders heißen</h4>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Im Buch</th><th>Heute</th></tr></thead>
+      <tbody>
+        <tr><td>Windsurf</td><td>Devin Desktop (seit 2. Juni 2026)</td></tr>
+        <tr><td>Cascade</td><td>Devin Local</td></tr>
+        <tr><td>Gemini CLI</td><td>Antigravity CLI (Endnutzer-Abschaltung 18. Juni 2026)</td></tr>
+        <tr><td>Anysphere (Cursor)</td><td>Tochter von SpaceX (seit Mitte August 2026)</td></tr>
+        <tr><td><span class="mono">gsd-build/get-shit-done</span></td><td><span class="mono">open-gsd</span>, u. a. <span class="mono">get-shit-done-redux</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="buybox-sec">
+  <div class="sec-head">
+    <div class="eyebrow">Zum Buch</div>
+  </div>
+  <a class="buybox" href="https://www.hanser-fachbuch.de/9783446488540" rel="noopener">
+    <img src="assets/banner.jpg" alt="Werbebanner des Carl Hanser Verlags: das Buch ‚Von Vibe Coding zu Agentic Engineering‘ als gedrucktes Exemplar, daneben der Hinweis ‚E-Book inklusive‘ und der Claim ‚Das Praxishandbuch für anspruchsvolle Programmierung mit KI‘" width="960" height="960" loading="lazy">
+    <span class="buybox-cta">Zur Buchseite beim Carl Hanser Verlag &rarr;</span>
+  </a>
+</section>
+
+<div class="foot">
+  <p><b>Zur Methode.</b> Grundlage dieser Seite ist ein systematischer Abgleich des Buchs (Redaktionsschluss Juni 2026) mit dem aktuellen Stand der Werkzeuglandschaft. Jede Angabe ist gegen die jeweils verlinkte Quelle gepr&uuml;ft; die Buchzitate und Seitenzahlen sind gegen den Satz-Umbruch vom Juli 2026 abgeglichen. Im gedruckten Buch k&ouml;nnen sich einzelne Seitenzahlen um wenige Seiten verschieben, falls im Feinlayout noch Seiten eingef&uuml;gt wurden &mdash; Kapitel- und Abschnittsangaben bleiben davon unber&uuml;hrt.</p>
+  <p><b>Fortschreibung.</b> Diese Seite wird laufend gepflegt. Jede &Auml;nderung an einem Eintrag ist in der Versionshistorie des zugrunde liegenden Repositories nachvollziehbar &mdash; eine Errata-Seite sollte sich an denselben Ma&szlig;st&auml;ben messen lassen wie das Buch, das sie korrigiert.</p>
+  <div class="sitefoot">
+    <p class="disclaim">Diese Seite ist der pers&ouml;nlich vom Autor gepflegte Online-Anhang zum Buch. Sie ist kein Angebot des Carl Hanser Verlags. Fragen, Hinweise und Fundstellen, die hier fehlen: <a href="mailto:Thomas.Raffelsieper@viadee.de">Thomas.Raffelsieper@viadee.de</a></p>
+    <p class="viadee-line">Der Autor arbeitet als Senior Consultant und Software Architect bei der</p>
+    <a class="viadee" href="https://www.viadee.de/" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 498 114" class="viadee-svg" role="img" aria-label="viadee Unternehmensberatung AG">
+  <path fill="currentColor" d="M27.76 111.57c-.88 0-1.48-.59-1.77-1.48L.6 41.59c-.3-.89.15-1.48 1.18-1.48h18.6c1.03 0 1.62.44 1.92 1.48l13.88 42.37h.29l13.29-42.37c.3-1.03.89-1.48 1.92-1.48h18.31c1.03 0 1.48.59 1.18 1.48l-25.39 68.5c-.3.89-.89 1.48-1.77 1.48H27.76ZM81.72 111.57c-.89 0-1.48-.59-1.48-1.48v-68.5c0-.89.59-1.48 1.48-1.48h17.72c.89 0 1.48.59 1.48 1.48v68.5c0 .89-.59 1.48-1.48 1.48H81.72Zm0-82.82c-.89 0-1.48-.59-1.48-1.48V12.65c0-.89.59-1.48 1.48-1.48h17.72c.89 0 1.48.59 1.48 1.48v14.62c0 .89-.59 1.48-1.48 1.48H81.72ZM155.39 87.8v-4.87c0-.59-.29-.88-.89-.88h-10.04c-8.71 0-12.7 2.51-12.7 8.12 0 5.02 3.54 7.53 10.34 7.53 8.86 0 13.29-3.25 13.29-9.89m1.77 23.76c-.89 0-1.48-.59-1.48-1.48v-4.72h-.15c-3.69 4.72-9.89 7.82-19.64 7.82-12.7 0-23.77-6.64-23.77-21.85s11.96-23.03 29.67-23.03h12.7c.59 0 .89-.3.89-.89v-2.66c0-6.64-3.25-9.74-14.62-9.74-7.23 0-12.55 2.07-15.95 4.58-.74.59-1.48.44-1.92-.3l-6.64-11.66c-.44-.89-.3-1.62.44-2.07 6.05-4.28 14.76-7.09 26.58-7.09 23.33 0 31.74 7.97 31.74 25.84v45.77c0 .88-.59 1.48-1.48 1.48h-16.39.02ZM231.28 88.1c.89-2.8 1.33-5.9 1.33-12.25s-.44-9.45-1.33-12.25c-1.62-5.17-5.46-7.68-10.92-7.68s-9.45 2.51-11.07 7.68c-.89 2.8-1.33 5.9-1.33 12.25s.44 9.45 1.33 12.25c1.62 5.02 5.46 7.68 11.07 7.68s9.3-2.66 10.92-7.68Zm2.8 23.47c-.89 0-1.48-.59-1.48-1.48v-5.17h-.15c-3.39 4.87-9.3 8.27-18.75 8.27-11.96 0-20.52-5.91-24.21-17.13-1.77-5.61-2.51-11.07-2.51-20.23s.74-14.61 2.51-20.23c3.69-11.37 12.25-17.12 24.21-17.12 9.45 0 15.36 3.4 18.75 8.27h.15v-34.1c0-.89.59-1.48 1.48-1.48h17.72c.89 0 1.48.59 1.48 1.48v97.44c0 .89-.59 1.48-1.48 1.48h-17.72ZM310.23 68.31c.59 0 .89-.3.89-.89 0-2.21-.3-3.84-.74-5.31-1.62-4.87-6.05-7.82-11.96-7.82-5.91 0-10.33 2.95-11.96 7.82-.44 1.48-.74 3.1-.74 5.31 0 .59.3.89.89.89h23.62Zm-42.52 24.51c-1.48-4.43-2.51-9.6-2.51-16.98 0-7.38.89-12.7 2.36-17.13 4.13-12.85 15.5-20.23 30.71-20.23s26.72 7.53 30.86 20.08c1.47 4.72 2.36 9.89 2.36 22 0 .89-.59 1.48-1.62 1.48h-43.26c-.59 0-.89.3-.89.89.15 1.48.44 2.81.89 3.99 1.92 6.2 7.38 9.45 14.76 9.45s12.26-2.51 16.39-6.35c.74-.59 1.48-.74 2.07 0l9.74 9.15c.74.59.74 1.48.15 2.07-6.79 7.23-17.27 11.96-30.41 11.96-16.24 0-27.46-7.53-31.59-20.37M385.51 68.31c.59 0 .89-.3.89-.89 0-2.21-.29-3.84-.74-5.31-1.62-4.87-6.05-7.82-11.96-7.82-5.91 0-10.33 2.95-11.96 7.82-.44 1.48-.74 3.1-.74 5.31 0 .59.3.89.88.89H385.51Zm-42.52 24.51c-1.48-4.43-2.51-9.6-2.51-16.98 0-7.38.89-12.7 2.36-17.13 4.13-12.85 15.5-20.23 30.71-20.23s26.72 7.53 30.86 20.08c1.48 4.72 2.36 9.89 2.36 22 0 .89-.59 1.48-1.62 1.48h-43.26c-.59 0-.88.3-.88.89.15 1.48.44 2.81.88 3.99 1.92 6.2 7.38 9.45 14.76 9.45s12.26-2.51 16.39-6.35c.74-.59 1.48-.74 2.07 0l9.74 9.15c.74.59.74 1.48.15 2.07-6.79 7.23-17.27 11.96-30.41 11.96-16.24 0-27.46-7.53-31.59-20.37M455.53 54.19l-10.47-10.48H427.6v9.31c0 1.29 1.04 2.33 2.33 2.33h12.8l12.8 12.8 20.94-20.94h18.63c1.28 0 2.33-1.05 2.33-2.33v-9.31h-23.28l-18.62 18.62ZM455.53 15.8 470.66.66h-40.74c-1.29 0-2.33 1.04-2.33 2.33v8.15h23.28l4.66 4.66Z"/>
+  <path fill="currentColor" d="m470.08 13.46-14.55 14.55-6.4-6.4H427.6v11.63h19.2l8.73 8.73 16.89-16.89 25.01.02V13.46h-27.35Z"/>
+</svg></a>
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>
