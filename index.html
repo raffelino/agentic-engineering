@@ -107,6 +107,7 @@ ol.steps li,ul.bul li{font-size:.95rem;line-height:1.55;color:var(--ink);text-al
 .src{font-family:"Source Sans 3",sans-serif;font-size:.8rem;color:var(--ink3);line-height:1.55;
   padding:.7rem 0 0;border-top:1px solid var(--rule);background:none;margin-top:1rem}
 .src b{color:var(--ink3);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.66rem;display:block;margin-bottom:.15rem}
+.src .stand{display:block;margin-top:.3rem;font-size:.74rem;letter-spacing:.02em}
 
 /* Tabellen */
 .tbl-wrap{overflow-x:auto;margin-top:1.2rem;border-top:2px solid var(--blau)}
@@ -155,7 +156,7 @@ a.viadee:hover{color:var(--blau-tief)}
         <li>Erscheint am 11.&nbsp;September&nbsp;2026</li>
         <li>ISBN 978-3-446-48854-0</li>
         <li>E-Book inklusive</li>
-        <li>Stand dieser Seite: 1.&nbsp;September&nbsp;2026</li>
+        <li>Stand dieser Seite: 7.&nbsp;September&nbsp;2026</li>
       </ul>
     </div>
   </div>
@@ -186,7 +187,7 @@ a.viadee:hover{color:var(--blau-tief)}
   <div class="sec-head">
     <div class="eyebrow">Teil A</div>
     <h2>Korrekturen</h2>
-    <p>Acht Stellen, an denen das Buch heute in die Irre führen würde. Die erste ist sicherheitsrelevant.</p>
+    <p>Neun Stellen, an denen das Buch heute in die Irre führen würde. Die erste ist sicherheitsrelevant.</p>
   </div>
 
   <div class="entries">
@@ -206,7 +207,8 @@ a.viadee:hover{color:var(--blau-tief)}
         <div class="blk">
           <h4>Richtig ist</h4>
           <p>Seit dem <b>14. August 2026</b> ist der <b>Auto-Modus</b> die Standard-Berechtigungsstufe für neue Sessions auf den Plänen Pro, Max und Team. Er ersetzt die Rückfrage nicht durch blindes Vertrauen, sondern durch eine Prüfung: Ein separater Klassifikator bewertet jeden Shell-Befehl und jede Aktion. Claude fährt fort, solange die Aktion nicht als irreversibel, destruktiv oder außerhalb der Arbeitsumgebung eingestuft wird — dann fragt es weiterhin.</p>
-          <p>Der Auto-Modus existierte bereits zum Redaktionsschluss: als Research Preview seit März 2026, auf dem Pro-Plan seit Mai, auf Amazon Bedrock, Google Cloud und Microsoft Foundry seit Juni. Zum Standard wurde er erst im August.</p>
+          <p>Der Auto-Modus existierte bereits zum Redaktionsschluss: als Research Preview seit März 2026, auf dem Pro-Plan seit Mai, auf Amazon Bedrock, Google Cloud und Microsoft Foundry seit Juni. Zum Standard wurde er erst im August — eingebaut ab <b>v2.1.228</b> auf macOS, Linux und WSL bzw. ab v2.1.233 auf Windows; ältere Versionen starten weiterhin in der Stufe, die das Buch beschreibt.</p>
+          <p>Diese Stufe heißt inzwischen <b>Manual</b>, in der CLI, in den IDE-Erweiterungen und in der Desktop-App. Der Konfigurationswert bleibt <span class="mono">default</span>; <span class="mono">manual</span> wird als Alias akzeptiert (ab v2.1.200). Wer im Buch „Standardmodus“ liest, muss also unterscheiden: Manual ist der Modus, den das Kapitel beschreibt. Die Voreinstellung ist er nicht mehr. Und die Rückfrage bei Shell-Befehlen hat eine vierte Antwort bekommen, „Yes, and switch to auto mode“ (ab v2.1.247); sie ist damit zugleich der Ausstieg aus dem Modus, der sie auslöst.</p>
         </div>
         <div class="blk">
           <h4>Warum umgestellt wurde — und warum das Kapitel 8 stützt</h4>
@@ -219,6 +221,7 @@ a.viadee:hover{color:var(--blau-tief)}
             <li><span class="mono">/permissions</span> zeigt in einer laufenden Session den aktiven Modus. Er lässt sich jederzeit umschalten; eine selbst gesetzte Voreinstellung wird durch die Umstellung nicht überschrieben.</li>
             <li>Destruktive Operationen gehören in <span class="mono">deny</span>-Regeln, nicht in die Hoffnung auf eine Rückfrage — insbesondere <span class="mono">git push --force</span>, Löschbefehle und Produktionszugriffe.</li>
             <li>Auf Enterprise-Plänen und bei API-Konten blieb der Auto-Modus in der ersten Ausrollphase optional. Prüfen Sie, was in Ihrer Organisation gilt.</li>
+            <li>Netzwerkbefehle wie <span class="mono">curl</span> gehen im Auto-Modus durch den Klassifikator, der <span class="mono">curl | bash</span> standardmäßig blockt. Für Skripte, die nie fragen sollen, gibt es seit v2.1.260 <span class="mono">--permission-prompts none</span>: Was eine Rückfrage auslösen würde, wird abgelehnt, der aktive Modus entscheidet weiter.</li>
           </ol>
           <p style="margin-top:.9rem">Kapitel 3 bringt es auf eine Formel, die durch diese Umstellung nicht falsch, sondern nur eine Stufe wichtiger geworden ist: „Vertrauen ist gut, ein explizites <span class="mono">allow</span> ist besser.“ Seit dem 14. August gilt die Umkehrung genauso — Vertrauen ist gut, ein explizites <span class="mono">deny</span> ist besser.</p>
         </div>
@@ -227,7 +230,7 @@ a.viadee:hover{color:var(--blau-tief)}
           <p>„Claude Code kennt mehrere Berechtigungsstufen. In der strengsten fragt der Agent vor jeder potenziell destruktiven Aktion nach. Voreingestellt ist auf den Abo-Plänen inzwischen der Auto-Modus: Ein separater Klassifikator prüft jede Aktion und lässt sie durchlaufen, solange sie nicht irreversibel, destruktiv oder außerhalb Ihres Arbeitsverzeichnisses ist — sonst fragt er weiterhin. Der Hintergrund dieser Umstellung ist aufschlussreich: In Anthropics eigenen Messungen erkannten Menschen bei manueller Freigabe nur einen Bruchteil der gefährlichen Befehle, weil sie fast jede Abfrage bestätigen. Was Sie wirklich schützt, sind deshalb nicht die Rückfragen, sondern die Regeln, die Sie vorher aufschreiben.“</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 32</a> · <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch, 9. August 2026</a></div>
+      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 32</a> · <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch, 9. August 2026</a> · <a href="https://code.claude.com/docs/en/permission-modes">Claude Code, Permission modes (4. September 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.260</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -251,7 +254,7 @@ a.viadee:hover{color:var(--blau-tief)}
           <p>Das Kapitel bewertet Werkzeuge nach Funktionsumfang, Modellvielfalt und Preis. Für Leserinnen und Leser in regulierten Branchen ist die Eigentümerfrage aber ein eigenständiges Auswahlkriterium — wem gehört der Anbieter, wohin fließen Telemetrie und Code, welcher Konzernstrategie folgt das Produkt. Diese Dimension kommt im Buch nicht vor und sollte bei jeder Werkzeugentscheidung mitgeprüft werden.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://seekingalpha.com/news/4633335-spacex-completes-60b-acquisition-of-cursor-as-musk-led-firm-tries-to-gain-edge-in-ai-coding">Seeking Alpha</a> · <a href="https://devops.com/spacex-to-acquire-ai-coding-leader-cursor-in-60-billion-blockbuster-deal/">DevOps.com</a></div>
+      <div class="src"><b>Quellen</b><a href="https://seekingalpha.com/news/4633335-spacex-completes-60b-acquisition-of-cursor-as-musk-led-firm-tries-to-gain-edge-in-ai-coding">Seeking Alpha</a> · <a href="https://devops.com/spacex-to-acquire-ai-coding-leader-cursor-in-60-billion-blockbuster-deal/">DevOps.com</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -280,13 +283,13 @@ a.viadee:hover{color:var(--blau-tief)}
           <p>Der Windsurf-Abschnitt beschreibt korrekt ein Produkt, das es in dieser Form nicht mehr gibt. Lesen Sie ihn als Beschreibung der Editor-Kategorie — der Vergleich Cascade gegen Cursors Agent Mode bleibt lehrreich —, nicht als Kaufberatung.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://devin.ai/blog/windsurf-is-now-devin-desktop">Devin: Windsurf is now Devin Desktop</a> · <a href="https://docs.devin.ai/desktop/devin-desktop-faq">Devin Desktop FAQ</a></div>
+      <div class="src"><b>Quellen</b><a href="https://devin.ai/blog/windsurf-is-now-devin-desktop">Devin: Windsurf is now Devin Desktop</a> · <a href="https://docs.devin.ai/desktop/devin-desktop-faq">Devin Desktop FAQ</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
       <div class="e-top">
-        <div class="e-id"><span class="e-num">E-04</span><span class="pill p-med">Werkzeug eingestellt</span></div>
-        <h3>Gemini CLI ist eingestellt — der Abschnitt zu GEMINI.md beschreibt ein totes Werkzeug</h3>
+        <div class="e-id"><span class="e-num">E-04</span><span class="pill p-med">Werkzeug ersetzt</span></div>
+        <h3>Gemini CLI bedient keine Endnutzer mehr — der Abschnitt zu GEMINI.md beschreibt ein Werkzeug mit geschlossener Vordertür</h3>
         <div class="loc"><b>Kapitel 2</b>, „Die Macht der Konfigurationsdateien“, S. 32, Absatz beginnend „Google hat mit GEMINI.md …“</div>
       </div>
       <div class="e-body">
@@ -296,18 +299,19 @@ a.viadee:hover{color:var(--blau-tief)}
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>Gemini CLI und die Gemini-Code-Assist-Erweiterungen haben am <b>18. Juni 2026</b> aufgehört, Anfragen von Endnutzern zu bedienen. Nachfolger ist die <b>Antigravity CLI</b>, eine in Go geschriebene Terminal-Oberfläche, die sich mit der Desktop-Anwendung Antigravity 2.0 einen gemeinsamen Agent-Harness teilt. Enterprise-Kunden mit Gemini-Code-Assist-Lizenzen behalten den Zugang.</p>
+          <p>Gemini CLI und die Gemini-Code-Assist-Erweiterungen haben am <b>18. Juni 2026</b> aufgehört, Anfragen von Free-, AI-Pro- und AI-Ultra-Konten zu bedienen; so hatte Google es am 19. Mai 2026 angekündigt. Nachfolger ist die <b>Antigravity CLI</b>, eine in Go geschriebene Terminal-Oberfläche, die sich mit der Desktop-Anwendung Antigravity 2.0 einen gemeinsamen Agent-Harness teilt. Enterprise-Kunden mit Gemini Code Assist und Nutzer mit eigenem API-Schlüssel werden weiter bedient.</p>
+          <p>Eingestellt ist das Projekt damit nicht. Das Repository <span class="mono">google-gemini/gemini-cli</span> ist nicht archiviert: <b>Release v0.58.0 am 1. September 2026</b>, letzte Änderung am 4. September, Lizenz Apache 2.0. Die Dokumentation trägt weiterhin den Banner, Gemini CLI werde durch Antigravity CLI ersetzt. Für Leserinnen und Leser des Buchs ändert das nichts an der Konsequenz: Wer ohne Enterprise-Vertrag oder API-Schlüssel arbeitet, ist auf die Antigravity CLI verwiesen. Auch der GSD-Installer aus Kapitel 6 führt unter den unterstützten Laufzeiten inzwischen Antigravity CLI statt Gemini CLI.</p>
           <p><b>Nicht betroffen:</b> Kapitel 3 nennt den Übergang bereits korrekt („geht im Juni 2026 in Antigravity CLI über“). Dort ist keine Korrektur nötig.</p>
           <p><b>Randnotiz:</b> Die Torvalds-Anekdote in Kapitel 1 ist dadurch besser gealtert als gedacht — aus der „agent-first Coding-Umgebung“ von November 2025 ist Googles gesamte Agentenplattform geworden.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx">Virtualization Review</a> · <a href="https://ostechnix.com/google-is-replacing-gemini-cli-with-google-antigravity/">OSTechNix</a></div>
+      <div class="src"><b>Quellen</b><a href="https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx">Virtualization Review</a> · <a href="https://ostechnix.com/google-is-replacing-gemini-cli-with-google-antigravity/">OSTechNix</a> · <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google Developers Blog, 19. Mai 2026</a> · <a href="https://github.com/google-gemini/gemini-cli/releases">gemini-cli Releases (4. September 2026)</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
       <div class="e-top">
         <div class="e-id"><span class="e-num">E-05</span><span class="pill p-med">Codebeispiel</span></div>
-        <h3>Das Listing der GitHub Action nennt ein abgekündigtes Modell</h3>
+        <h3>Das Listing der GitHub Action nennt einen Modell-Alias, der nicht mehr der aktuelle ist</h3>
         <div class="loc"><b>Kapitel 3</b>, „Fortgeschrittene Techniken: Headless Mode und CI/CD-Integration“, YAML-Listing, S. 66</div>
       </div>
       <div class="e-body">
@@ -317,7 +321,7 @@ a.viadee:hover{color:var(--blau-tief)}
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>Der Alias <span class="mono">claude-sonnet-4-6</span> verweist auf eine Modellgeneration, die nicht mehr die aktuelle ist. Wer das Listing wörtlich übernimmt — und Codelistings werden wörtlich übernommen —, riskiert einen Fehlschlag im CI-Lauf.</p>
+          <p>Der Alias <span class="mono">claude-sonnet-4-6</span> verweist auf die Generation vor Sonnet 5. Er funktioniert noch: Anthropics Deprecations-Seite führt ihn als <b>„Active“</b> mit einer Retirement-Zusage nicht vor dem <b>17. Februar 2027</b>, die Modellübersicht unter „Legacy (still available)“. Aber Codelistings werden wörtlich übernommen, und ein Buch lebt länger als ein Modell-Alias. Das Listing wird an dem Tag scheitern, an dem das Modell zurückgezogen wird. Die Dokumentation der Action zeigt inzwischen <span class="mono">claude-sonnet-5</span> als Beispiel; besser ist, den Modellnamen gar nicht ins Listing zu schreiben.</p>
           <pre># Entweder den Alias weglassen und den Kontostandard nutzen:
 claude_args: "--max-turns 10"
 
@@ -330,7 +334,7 @@ claude_args: "--max-turns 10 --model &lt;aktueller-alias&gt;"</pre>
           <p>In ein Codebeispiel, das jahrelang in einem Buch steht, gehört kein Modellname. Das gilt auch für die Neuauflage.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 34</a></div>
+      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 34</a> · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">Anthropic, Model deprecations (4. September 2026)</a> · <a href="https://code.claude.com/docs/en/github-actions">Claude Code, GitHub Actions (4. September 2026)</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -349,14 +353,15 @@ claude_args: "--max-turns 10 --model &lt;aktueller-alias&gt;"</pre>
           <p>Die technischen Angaben des Buchs stimmen. Beide abgedruckten Installationsbefehle sind weiterhin die offiziell empfohlenen, und auch die Zwei-Linien-Darstellung trifft zu:</p>
           <pre>npx @opengsd/gsd-core@latest   # V1 / Core
 npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
-          <p>Beide Repositories werden aktiv gepflegt und wurden zuletzt am 24. August 2026 aktualisiert. <span class="mono">gsd-core</span> ist mit rund 8.700 Sternen das Flaggschiff, <span class="mono">gsd-pi</span> liegt bei rund 1.150.</p>
+          <p>Beide Pakete werden aktiv gepflegt: <span class="mono">@opengsd/gsd-core</span> 1.12.0 vom 30. August 2026, <span class="mono">@opengsd/gsd-pi</span> 1.18.0 vom 4. September 2026. <span class="mono">gsd-core</span> ist mit rund 9.100 Sternen das Flaggschiff, <span class="mono">gsd-pi</span> liegt bei rund 1.200.</p>
         </div>
         <div class="blk">
           <h4>Was fehlt: der Anlass</h4>
           <ul class="bul">
             <li>Seit dem <b>1. April 2026</b> gibt es keinen Kontakt mehr zum ursprünglichen Maintainer (TÂCHES); dessen Social-Media-Konten sind gelöscht oder nicht erreichbar.</li>
             <li>Der mit dem Projekt verbundene <span class="mono">$GSD</span>-Token wurde öffentlich mit einem <b>Rug-Pull</b> in Verbindung gebracht.</li>
-            <li>Im <b>Mai 2026</b> veröffentlichten die verbliebenen Maintainer eine Continuity-Ankündigung und verlagerten die Entwicklung unter die Organisation <span class="mono">open-gsd</span>. Das ursprüngliche Repository ist nicht mehr die offizielle Heimat der Entwicklung.</li>
+            <li>Im <b>Mai 2026</b> veröffentlichten die verbliebenen Maintainer eine Continuity-Ankündigung und verlagerten die Entwicklung unter die Organisation <span class="mono">open-gsd</span> — zunächst als <span class="mono">get-shit-done-redux</span>, seit dem 30. Mai 2026 als <span class="mono">gsd-core</span>. Das ursprüngliche Repository <span class="mono">gsd-build/get-shit-done</span> ist archiviert (letzte Änderung 31. Mai 2026).</li>
+            <li>Der Name ist umgedeutet: <span class="mono">gsd-core</span> führt als Tagline <b>„Git. Ship. Done.“</b>; „Get Shit Done“ kommt im README nicht mehr vor. Das im Buch zitierte „No bs“-README gehört zum archivierten V1-Repository.</li>
           </ul>
         </div>
         <div class="fix">
@@ -365,11 +370,12 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
         </div>
         <div class="tbl-wrap" style="margin-top:0;border-top:0">
           <table>
-            <thead><tr><th>Alt — nicht mehr verwenden</th><th>Neu</th></tr></thead>
+            <thead><tr><th>Alt — nicht mehr verwenden</th><th>Neu</th><th>Stand des alten Pakets auf npm</th></tr></thead>
             <tbody>
-              <tr><td><span class="mono">get-shit-done-cc</span></td><td><span class="mono">@opengsd/gsd-core</span></td></tr>
-              <tr><td><span class="mono">gsd-pi</span> (ungescoped)</td><td><span class="mono">@opengsd/gsd-pi</span></td></tr>
-              <tr><td><span class="mono">@gsd-build/sdk</span></td><td><span class="mono">@opengsd/gsd-sdk</span></td></tr>
+              <tr><td><span class="mono">get-shit-done-cc</span></td><td><span class="mono">@opengsd/gsd-core</span></td><td>deprecated seit 23. Mai 2026</td></tr>
+              <tr><td><span class="mono">gsd-pi</span> (ungescoped)</td><td><span class="mono">@opengsd/gsd-pi</span></td><td>deprecated seit 23. Mai 2026</td></tr>
+              <tr><td><span class="mono">@gsd-build/sdk</span></td><td><span class="mono">@opengsd/gsd-sdk</span></td><td>kein Marker, seit 27. März 2026 unverändert</td></tr>
+              <tr><td><span class="mono">@opengsd/get-shit-done-redux</span></td><td><span class="mono">@opengsd/gsd-core</span></td><td>deprecated, verweist auf den neuen Namen</td></tr>
             </tbody>
           </table>
         </div>
@@ -378,7 +384,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p><b>Unberührt bleibt alles Inhaltliche.</b> Context Rot, die Iron Rule, die Hierarchie Milestone → Slice → Task, Wave Execution, Crash Recovery, Stuck Detection, Verifikations-Gates und Kostendeckel sind Muster, keine Produkteigenschaften. Sie gelten unabhängig davon, wer das Repository verwaltet — und sie sind 2026 dabei, Branchenstandard zu werden.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://github.com/open-gsd">Open GSD</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/109">Discussion #109: Why the fork</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/433">Discussion #433: Installation Guide</a></div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/open-gsd">Open GSD</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/109">Discussion #109: Why the fork</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/433">Discussion #433: Installation Guide</a> · <a href="https://github.com/open-gsd/gsd-core/issues/518">Issue #518: Umbenennung zu gsd-core (30. Mai 2026)</a> · <a href="https://www.npmjs.com/package/get-shit-done-cc">npm: get-shit-done-cc (4. September 2026)</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -409,7 +415,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>„Die METR-Studie zeigt, dass Produktivitätsgewinne nicht garantiert sind. Die Folgemessung von 2026 deutet zwar auf vorsichtige Gewinne, aber METR selbst stuft sie als nicht belastbar ein — aus einem Grund, der mehr über die Gegenwart sagt als jede Prozentzahl: Es fanden sich kaum noch Entwickler, die für die Kontrollgruppe ohne KI arbeiten wollten, und die Zeitmessung selbst versagt, sobald mehrere Agenten parallel laufen. Die Frage, ob KI-Werkzeuge Entwickler schneller machen, wird gerade unbeantwortbar — nicht weil die Antwort unklar wäre, sondern weil das Gegenexperiment verschwindet.“</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://metr.org/blog/2026-02-24-uplift-update/">METR: We are Changing our Developer Productivity Experiment Design</a></div>
+      <div class="src"><b>Quelle</b><a href="https://metr.org/blog/2026-02-24-uplift-update/">METR: We are Changing our Developer Productivity Experiment Design</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -429,7 +435,61 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Die Einordnung des Buchs — schlanker Klassiker mit vorbildlicher Git-Integration, der die Konvention der atomaren Commits geprägt hat — bleibt richtig. Die Empfehlung an Einsteiger ist es nicht mehr. Wer heute einen quelloffenen Terminal-Agenten sucht, findet in OpenCode das aktivere Projekt.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://www.morphllm.com/comparisons/opencode-vs-aider">Morph: OpenCode vs Aider, Juni 2026</a></div>
+      <div class="src"><b>Quelle</b><a href="https://www.morphllm.com/comparisons/opencode-vs-aider">Morph: OpenCode vs Aider, Juni 2026</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-09</span><span class="pill p-med">Befehle umbenannt</span></div>
+        <h3>BMAD hat seit Mai die Befehle umbenannt, mit denen das Buch arbeitet — und einen der sechs Agenten zurückgezogen</h3>
+        <div class="loc"><b>Kapitel 7</b>, Abschnitte 7.5 bis 7.11, S.&nbsp;125–131 · <b>Kapitel 4</b>, S.&nbsp;72–74, 80, 83–85 · mitbetroffen: Vorwort S.&nbsp;XIV, Vergleichstabelle S.&nbsp;120</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„sechs spezialisierte KI-Agenten (Mary, John, Winston, Amelia, Sally, Paige), vier Phasen“ <span class="mono">(K4)</span></div>
+          <div class="q">„bmad-check-implementation-readiness … bmad-dev-story“ <span class="mono">(K7)</span></div>
+          <div class="q">„Marco nutzt den Quick Flow für den Fix: bmad-quick-dev“ <span class="mono">(K7)</span></div>
+          <div class="q">„im Quell-Repository unter src/bmm-skills/1-analysis/bmad-agent-analyst/“ <span class="mono">(K4)</span></div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Die Umbenennung begann mit 6.7 (17. Mai 2026) und 6.9 (21. Juni 2026), also um den Redaktionsschluss herum. <b>Version 6.11.0 vom 9. August 2026</b> hat den Rest erledigt und die Skills neu zugeschnitten; der Changelog überschreibt das mit „Quick Dev becomes Build“. Die Zahl der Kernskills sank von 14 auf 8. Die Namen, die das Buch verwendet, lauten heute:</p>
+        </div>
+        <div class="tbl-wrap" style="margin-top:0;border-top:0">
+          <table>
+            <thead><tr><th>Im Buch</th><th>Heute</th></tr></thead>
+            <tbody>
+              <tr><td><span class="mono">bmad-create-prd</span></td><td><span class="mono">bmad-prd</span> (seit 6.7, 17. Mai 2026)</td></tr>
+              <tr><td><span class="mono">bmad-create-architecture</span></td><td><span class="mono">bmad-architecture</span> (seit 6.9, 21. Juni 2026)</td></tr>
+              <tr><td><span class="mono">bmad-market-research</span></td><td><span class="mono">bmad-deep-recon</span> (seit 6.11; auch für Domain- und Technik-Recherche)</td></tr>
+              <tr><td><span class="mono">bmad-check-implementation-readiness</span></td><td>entfernt (6.11), aufgegangen in <span class="mono">bmad-sprint-planning</span></td></tr>
+              <tr><td><span class="mono">bmad-dev-story</span> / <span class="mono">bmad-create-story</span></td><td>deprecated (6.11); seit 6.12 nur noch mit <span class="mono">--shims</span> installiert</td></tr>
+              <tr><td><span class="mono">bmad-quick-dev</span></td><td><span class="mono">bmad-build</span> (seit 6.11)</td></tr>
+              <tr><td><span class="mono">bmad-checkpoint-preview</span></td><td><span class="mono">bmad-walkthrough</span> (seit 6.12.0, 3. September 2026)</td></tr>
+              <tr><td><span class="mono">bmad-agent-tech-writer</span> (Paige)</td><td>zurückgezogen (6.11) — fünf statt sechs Agenten; ein Ersatz ist als optional installierbarer Agent angekündigt</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="blk">
+          <p>Unverändert: <span class="mono">bmad-help</span>, <span class="mono">bmad-party-mode</span>, <span class="mono">bmad-brainstorming</span>, <span class="mono">bmad-create-epics-and-stories</span>, <span class="mono">npx bmad-method install</span> und <span class="mono">_bmad/custom/&lt;skill&gt;.toml</span>. Geändert mit 6.11: Der Quellbaum heißt <span class="mono">agents / plan / ship</span>, den Ordner <span class="mono">1-analysis</span> gibt es nicht mehr; die Konfiguration liegt in TOML-Dateien, die <span class="mono">config.yaml</span> des Buchs gilt als Legacy; <span class="mono">uv</span> mit Python 3.11 ist Pflicht. <b>Version 6.12.0 vom 3. September 2026</b> zieht die Schraube an: Die Weiterleitungen von alten auf neue Namen („Shims“) gibt es bei einer Neuinstallation nur noch mit <span class="mono">--shims</span>.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum das zählt</h4>
+          <p>Kapitel 7 ist ein durchgängiges Praxisbeispiel, und die Befehlskette PRD → Architektur → Readiness-Check → Story ist sein Rückgrat. Wer heute frisch installiert, findet diese Namen nicht; einer davon existiert nicht mehr. Die Methode dahinter — Phasen, Artefakte, Rollen — ist unverändert, und das Buch beschreibt sie zu Recht als Muster, nicht als Befehlsliste. Auch Paige kostet das Buch keine These, nur eine Zahl; die Doku spricht von „on hiatus“.</p>
+          <p>Die Richtung bestätigt, was Kapitel 7 mit dem Quick Flow andeutet: Der Aufwand richtet sich nach der Aufgabe, nicht nach dem Framework. BMAD hat das in 6.12 zum Grundsatz gemacht — „Build decides how much ceremony a change needs after investigating it, not before.“ Einen Ersatztext für den Nachdruck gibt es bewusst nicht: Zwischen 6.11 und 6.12 lagen knapp vier Wochen, Version 7 ist angekündigt.</p>
+        </div>
+        <div class="blk">
+          <h4>Was Sie konkret tun sollten</h4>
+          <ol class="steps">
+            <li>Nach der Installation <span class="mono">bmad-help</span> aufrufen; der Befehl listet die aktuellen Skill-Namen.</li>
+            <li>Den Ablauf aus Kapitel 7 übersetzen: <span class="mono">bmad-prd</span>, <span class="mono">bmad-architecture</span>, <span class="mono">bmad-create-epics-and-stories</span>, <span class="mono">bmad-sprint-planning</span>, <span class="mono">bmad-build</span>, <span class="mono">bmad-walkthrough</span>.</li>
+            <li>Für ältere Anleitungen bei der Installation <span class="mono">--shims</span> mitgeben; dann leiten die alten Namen weiter.</li>
+            <li>Anpassungsdateien umbenennen (<span class="mono">bmad-quick-dev.toml</span> → <span class="mono">bmad-build.toml</span>), <span class="mono">uv</span> installieren.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/CHANGELOG.md">BMAD CHANGELOG, v6.7.0 bis v6.12.0 (17. Mai bis 3. September 2026)</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/src/bmm-skills/v6-shims/README.md">v6-shims/README.md (Umbenennungstabelle, Stand 6.11)</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/releases">BMAD Releases</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/docs/reference/skills-and-agents.md">Doku: Skills and agents</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
   </div>
@@ -451,14 +511,17 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
       </div>
       <div class="e-body">
         <div class="blk">
-          <p>Das Buch nennt Claude Opus 4.7 und 4.8 mit ihren Benchmarkwerten und beschreibt ein Kontextfenster von 200.000 Token mit optionaler Erweiterung auf eine Million. Inzwischen ist die Claude-5-Familie da:</p>
+          <p>Das Buch nennt Claude Opus 4.7 und 4.8 mit ihren Benchmarkwerten und beschreibt ein Kontextfenster von 200.000 Token mit optionaler Erweiterung auf eine Million. Inzwischen ist die Claude-5-Familie da, und sie hat drei Stufen statt zwei:</p>
           <ul class="bul">
-            <li><b>Claude Sonnet 5</b> — Ende Juni 2026, Standardmodell für Pro, Team Standard und Enterprise-Plätze, natives Kontextfenster von einer Million Token, adaptives Reasoning standardmäßig aktiv.</li>
-            <li><b>Claude Opus 5</b> — 24. Juli 2026, Standard-Opus-Modell in Claude Code, ebenfalls eine Million Token Kontext. Der Preis blieb gegenüber Opus 4.8 unverändert; ein Fast Mode ist zu 10 / 50 US-Dollar je Million Token verfügbar.</li>
+            <li><b>Claude Sonnet 5</b> — Ende Juni 2026, Standardmodell für Pro und Team Standard, natives Kontextfenster von einer Million Token, adaptives Reasoning standardmäßig aktiv. Seit dem 1. September 2026 kostet es dauerhaft <b>2 / 10 US-Dollar</b> je Million Token; der Satz war als Einführungspreis bis Ende August angekündigt, die Rückkehr auf 3 / 15 findet laut Preisseite nicht statt. Die Kostenrechnung des Buchs (S. 64: 3 / 15 für Sonnet) liegt damit um ein Drittel zu hoch.</li>
+            <li><b>Claude Opus 5</b> — 24. Juli 2026, Standard für Max, Team Premium und Enterprise, ebenfalls eine Million Token Kontext. Der Preis blieb gegenüber Opus 4.8 bei 5 / 25 US-Dollar; ein Fast Mode ist zu 10 / 50 verfügbar.</li>
+            <li><b>Claude Fable 5.1</b> — 1. September 2026, oberhalb von Opus, eine Million Token Kontext, 10 / 50 US-Dollar je Million Token; der Vorgänger Fable 5 erschien am 9. Juni 2026. Die Schwestervariante Claude Mythos 5.1 gibt es nur auf Einladung (Project Glasswing). In Claude Code (laut Doku ab v2.1.255, laut Changelog v2.1.257) wählt man die Stufe ausdrücklich mit <span class="mono">/model fable</span>; der Alias <span class="mono">best</span> nimmt Fable, wo verfügbar, sonst Opus. Voreinstellung ist Fable auf keinem Plan.</li>
           </ul>
-          <p><b>Die eigentliche Nachricht ist nicht die neue Zahl, sondern die Taktzahl:</b> vier Frontier-Veröffentlichungen in weniger als zwei Monaten. Ein gedrucktes Buch kann diesem Rhythmus nicht folgen. Was das Kapitel dazu selbst schreibt, bleibt uneingeschränkt gültig: <em>„Benchmarks messen das, was messbar ist, nicht unbedingt das, was wichtig ist.“</em></p>
+          <p>Das Verhältnis Eingabe zu Ausgabe bleibt auf allen drei Stufen 1 : 5.</p>
+          <p><b>Die eigentliche Nachricht ist nicht die neue Zahl, sondern die Taktzahl:</b> sechs Frontier-Veröffentlichungen zwischen Mitte April und Anfang September 2026. Ein gedrucktes Buch kann diesem Rhythmus nicht folgen. Was das Kapitel dazu selbst schreibt, bleibt uneingeschränkt gültig: <em>„Benchmarks messen das, was messbar ist, nicht unbedingt das, was wichtig ist.“</em></p>
         </div>
       </div>
+      <div class="src"><b>Quellen</b><a href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, Models overview (4. September 2026)</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic, Pricing (4. September 2026)</a> · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">Anthropic, Model deprecations (4. September 2026)</a> · <a href="https://code.claude.com/docs/en/model-config">Claude Code, Model configuration (4. September 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.257</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -477,7 +540,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p><b>Die Pointe hat sich verbessert:</b> Big Tech finanziert inzwischen die quelloffene Alternative zu Big Tech. Ob das die Unabhängigkeit sichert oder nur eleganter verpackt, ist die Frage, die an die Stelle der alten tritt.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://thenewstack.io/openclaw-foundation-nonprofit-status/">The New Stack</a> · <a href="https://steipete.me/posts/2026/openclaw">Peter Steinberger</a></div>
+      <div class="src"><b>Quellen</b><a href="https://thenewstack.io/openclaw-foundation-nonprofit-status/">The New Stack</a> · <a href="https://steipete.me/posts/2026/openclaw">Peter Steinberger</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -498,6 +561,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
         </div>
         <div class="blk"><p>Die Einordnungen des Buchs — Lovable als Schönheitskönig mit tiefer Supabase-Integration, Bolt als Sprinter ohne Plan-Schritt, Replit als All-in-One-Plattform für Nicht-Programmierer — bleiben zutreffend. Nur die Größenverhältnisse haben sich verschoben.</p></div>
       </div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -514,6 +578,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           </ul>
         </div>
       </div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -529,7 +594,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p><b>Zur Einordnung:</b> Eine publizierte Nachfolgeerhebung gibt es noch nicht — die Umfrage 2026 lief im Sommer an, ihre Ergebnisse erscheinen voraussichtlich erst nach dem Buch. Sekundärquellen, die die genannten Werte bereits als „Survey 2026“ führen, verwechseln das Erhebungsjahr; diese Seite wird aktualisiert, sobald die echten 2026er-Zahlen vorliegen.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/">Stack Overflow: Closing the developer AI trust gap (18. Februar 2026)</a></div>
+      <div class="src"><b>Quelle</b><a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/">Stack Overflow: Closing the developer AI trust gap (18. Februar 2026)</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -543,7 +608,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Der Digital Omnibus wurde am 24. Juli 2026 im Amtsblatt veröffentlicht und trat am 27. Juli 2026 in Kraft — sechs Tage vor der ursprünglichen Frist. Die Hochrisiko-Pflichten nach Annex III verschieben sich auf den <b>2. Dezember 2027</b>, die nach Annex I auf den <b>2. August 2028</b>. Die Transparenzpflichten nach Artikel 50 gelten unverändert seit August 2026.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/">Rat der Europäischen Union</a></div>
+      <div class="src"><b>Quelle</b><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/">Rat der Europäischen Union</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -564,7 +629,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Das Februar-Zitat ist die beste verfügbare Belegstelle für die zentrale These von Kapitel 11 und ließe sich als Fußnote ergänzen. Die April-Formel „raises the floor / raises the ceiling“ wäre darüber hinaus ein starker Kapitelabschluss — sie sagt in zwei Sätzen, was das Buch über elf Kapitel entwickelt.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy: Sequoia Ascent 2026 summary</a> · <a href="https://thenewstack.io/vibe-coding-is-passe/">The New Stack: Vibe coding is passé</a></div>
+      <div class="src"><b>Quellen</b><a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy: Sequoia Ascent 2026 summary</a> · <a href="https://thenewstack.io/vibe-coding-is-passe/">The New Stack: Vibe coding is passé</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
   </div>
@@ -599,6 +664,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Weiter: Computer Use im CLI, eingebauter Browser in der Desktop-App, <span class="mono">/doctor</span> als Setup-Diagnose, <span class="mono">--safe-mode</span> zur Fehlersuche ohne Anpassungen, <span class="mono">fallbackModel</span> für bis zu drei Ausweichmodelle.</p>
         </div>
       </div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -620,7 +686,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Parallelität ist damit keine Einstellung, sondern eine Entscheidung — und zwar eine, die von der Struktur der Aufgabe abhängt.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">Google Research Blog</a> · <a href="https://arxiv.org/html/2512.08296v1">arXiv: Towards a Science of Scaling Agent Systems</a> · <a href="https://venturebeat.com/orchestration/research-shows-more-agents-isnt-a-reliable-path-to-better-enterprise-ai">VentureBeat</a></div>
+      <div class="src"><b>Quellen</b><a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">Google Research Blog</a> · <a href="https://arxiv.org/html/2512.08296v1">arXiv: Towards a Science of Scaling Agent Systems</a> · <a href="https://venturebeat.com/orchestration/research-shows-more-agents-isnt-a-reliable-path-to-better-enterprise-ai">VentureBeat</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -634,6 +700,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Der Bericht liest das nicht als Scheitern, sondern als Beschreibung des Berufs: Einrichten, Prompten, Beaufsichtigen, Validieren und Urteilen sind nicht die Reibung auf dem Weg zur Automatisierung, sondern die Arbeit selbst. Das ist die empirische Fassung dessen, was das Buch über elf Kapitel argumentiert.</p>
         </div>
       </div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -647,6 +714,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Größenordnung des Ökosystems: rund 97 Millionen SDK-Downloads pro Monat, über 5.800 Server. Für das Sicherheitskapitel wichtig: Zu MCP existiert inzwischen ein behördlicher Sicherheitsleitfaden (Juni 2026) — Prompt Injection über Server- und Werkzeugbeschreibungen ist die dominante neue Angriffsklasse und im Buch nur mit einem Warnkasten vertreten.</p>
         </div>
       </div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -660,6 +728,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Die Aussage des Buchs, dass Claude Code AGENTS.md nicht direkt liest und der empfohlene Weg der <span class="mono">@AGENTS.md</span>-Import aus der CLAUDE.md ist, gilt weiterhin.</p>
         </div>
       </div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
     </article>
 
   </div>
@@ -669,7 +738,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
   <div class="sec-head">
     <div class="eyebrow">Teil D</div>
     <h2>Lebende Tabelle</h2>
-    <p>Stand 24. August 2026. Dieser Teil wird fortgeschrieben; die übrigen Teile bleiben als Korrekturprotokoll stehen.</p>
+    <p>Stand 4. September 2026. Dieser Teil wird fortgeschrieben; die übrigen Teile bleiben als Korrekturprotokoll stehen.</p>
   </div>
 
   <h4 style="margin-top:1.6rem">Modelle in Claude Code</h4>
@@ -677,16 +746,17 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
     <table>
       <thead><tr><th>Rolle</th><th>Aktuell</th><th>Standard für</th></tr></thead>
       <tbody>
-        <tr><td>Höchste Leistungsklasse</td><td>Claude Opus 5 (seit 24. Juli 2026)</td><td>Max, Team Premium</td></tr>
-        <tr><td>Ausgewogene Klasse</td><td>Claude Sonnet 5 (seit Ende Juni 2026)</td><td>Pro, Team Standard, Enterprise</td></tr>
-        <tr><td>Kontextfenster</td><td>1 Mio. Token nativ bei beiden</td><td>—</td></tr>
+        <tr><td>Spitzenklasse, ausdrücklich zu wählen</td><td>Claude Fable 5.1 (seit 1. September 2026)</td><td>kein Plan — <span class="mono">/model fable</span></td></tr>
+        <tr><td>Höchste Leistungsklasse in der Voreinstellung</td><td>Claude Opus 5 (seit 24. Juli 2026)</td><td>Max, Team Premium, Enterprise</td></tr>
+        <tr><td>Ausgewogene Klasse</td><td>Claude Sonnet 5 (seit Ende Juni 2026)</td><td>Pro, Team Standard</td></tr>
+        <tr><td>Kontextfenster</td><td>1 Mio. Token nativ bei allen dreien</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
   <p class="prose" style="font-size:.9rem;color:var(--ink-3);margin-top:.9rem">Der jeweils aktuelle Alias steht in der offiziellen Dokumentation. Setzen Sie ihn über <span class="mono">ANTHROPIC_DEFAULT_MODEL</span> an genau einer Stelle, nicht in jedem Skript.</p>
 
   <h4 style="margin-top:2.2rem">Preisverhältnisse</h4>
-  <p class="prose" style="margin-top:.7rem;color:var(--ink-2)">Statt Beträgen hier das, was sich als stabil erwiesen hat: <b>Ausgabe-Token kosten etwa das Fünffache von Eingabe-Token.</b> Dieses Verhältnis hat vier Modellgenerationen überstanden. Die absoluten Beträge haben sich mehrfach geändert — sie stehen bei den Anbietern.</p>
+  <p class="prose" style="margin-top:.7rem;color:var(--ink-2)">Statt Beträgen hier das, was sich als stabil erwiesen hat: <b>Ausgabe-Token kosten etwa das Fünffache von Eingabe-Token.</b> Dieses Verhältnis hat vier Modellgenerationen überstanden und gilt seit dem 1. September 2026 auf drei Stufen: 2 / 10 (Sonnet 5), 5 / 25 (Opus 5), 10 / 50 (Fable 5.1) US-Dollar je Million Token. Die absoluten Beträge haben sich mehrfach geändert — sie stehen bei den Anbietern.</p>
   <p class="prose" style="color:var(--ink-2)">Für Claude Code gilt weiterhin die Struktur, die Kapitel 3 beschreibt: Abo mit Kontingent (Pro und zwei Max-Stufen) oder nutzungsbasierte API-Abrechnung, dazu Wochenlimits auf den Abo-Plänen. Auch Cursor und GitHub Copilot arbeiten mit dieser Mischform; Copilot hat zum 1. Juni 2026 auf nutzungsbasierte AI Credits umgestellt, was das Buch bereits vermerkt.</p>
 
   <h4 style="margin-top:2.2rem">Werkzeuge, die im Buch anders heißen</h4>
@@ -698,7 +768,8 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
         <tr><td>Cascade</td><td>Devin Local</td></tr>
         <tr><td>Gemini CLI</td><td>Antigravity CLI (Endnutzer-Abschaltung 18. Juni 2026)</td></tr>
         <tr><td>Anysphere (Cursor)</td><td>Tochter von SpaceX (seit Mitte August 2026)</td></tr>
-        <tr><td><span class="mono">gsd-build/get-shit-done</span></td><td><span class="mono">open-gsd</span>, u. a. <span class="mono">get-shit-done-redux</span></td></tr>
+        <tr><td>Amazon Q Developer CLI</td><td>Kiro CLI (Support für die Amazon-Q-Developer-IDE-Plugins endet 30. April 2027)</td></tr>
+        <tr><td><span class="mono">gsd-build/get-shit-done</span></td><td><span class="mono">open-gsd/gsd-core</span> (Zwischenname <span class="mono">get-shit-done-redux</span>, seit 30. Mai 2026 <span class="mono">gsd-core</span>; V1-Repository archiviert, letzte Änderung 31. Mai 2026)</td></tr>
       </tbody>
     </table>
   </div>
