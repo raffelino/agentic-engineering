@@ -1,6 +1,6 @@
 # Von Vibe Coding zu Agentic Engineering — Errata & Aktualisierungen
 
-Online-Anhang zum Buch **„Von Vibe Coding zu Agentic Engineering — Methoden für professionelle Softwareentwicklung mit KI"** von Thomas Raffelsieper (Carl Hanser Verlag, 2026, ISBN 978-3-446-48854-0).
+Online-Anhang zum Buch **„Von Vibe Coding zu Agentic Engineering — Methoden für professionelle Softwareentwicklung mit KI"** von Thomas Raffelsieper (Carl Hanser Verlag, 2026, Print-ISBN 978-3-446-48842-7, E-Book-ISBN 978-3-446-48854-0).
 
 **➜ Seite: https://raffelino.github.io/agentic-engineering/**
 
