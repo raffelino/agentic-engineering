@@ -156,7 +156,7 @@ a.viadee:hover{color:var(--blau-tief)}
         <li>Erschienen am 11.&nbsp;September&nbsp;2026</li>
         <li>ISBN 978-3-446-48842-7 (Print) &middot; 978-3-446-48854-0 (E-Book)</li>
         <li>E-Book inklusive</li>
-        <li>Stand dieser Seite: 7.&nbsp;September&nbsp;2026</li>
+        <li>Stand dieser Seite: 25.&nbsp;November&nbsp;2026</li>
       </ul>
     </div>
   </div>
@@ -187,7 +187,7 @@ a.viadee:hover{color:var(--blau-tief)}
   <div class="sec-head">
     <div class="eyebrow">Teil A</div>
     <h2>Korrekturen</h2>
-    <p>Neun Stellen, an denen das Buch heute in die Irre führen würde. Die erste ist sicherheitsrelevant.</p>
+    <p>Dreizehn Stellen, an denen das Buch heute in die Irre führen würde. Drei davon sind sicherheitsrelevant: E-01, E-12 und E-13.</p>
   </div>
 
   <div class="entries">
@@ -206,9 +206,10 @@ a.viadee:hover{color:var(--blau-tief)}
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>Seit dem <b>14. August 2026</b> ist der <b>Auto-Modus</b> die Standard-Berechtigungsstufe für neue Sessions auf den Plänen Pro, Max und Team. Er ersetzt die Rückfrage nicht durch blindes Vertrauen, sondern durch eine Prüfung: Ein separater Klassifikator bewertet jeden Shell-Befehl und jede Aktion. Claude fährt fort, solange die Aktion nicht als irreversibel, destruktiv oder außerhalb der Arbeitsumgebung eingestuft wird — dann fragt es weiterhin.</p>
+          <p>Interaktive Sessions starten heute im <b>Auto-Modus</b> — seit dem <b>14. August 2026</b> auf den Abo-Plänen, ab <b>v2.1.283</b> (25. September 2026) unabhängig vom Plan, also auch auf Enterprise, mit API-Schlüssel und über Bedrock, Google Cloud oder Foundry. Er ersetzt die Rückfrage nicht durch blindes Vertrauen, sondern durch eine Prüfung: Ein separater Klassifikator bewertet jeden Shell-Befehl und jede Aktion. Claude fährt fort, solange die Aktion nicht als irreversibel, destruktiv oder außerhalb der Arbeitsumgebung eingestuft wird — dann fragt es weiterhin.</p>
           <p>Der Auto-Modus existierte bereits zum Redaktionsschluss: als Research Preview seit März 2026, auf dem Pro-Plan seit Mai, auf Amazon Bedrock, Google Cloud und Microsoft Foundry seit Juni. Zum Standard wurde er erst im August — eingebaut ab <b>v2.1.228</b> auf macOS, Linux und WSL bzw. ab v2.1.233 auf Windows; ältere Versionen starten weiterhin in der Stufe, die das Buch beschreibt.</p>
           <p>Diese Stufe heißt inzwischen <b>Manual</b>, in der CLI, in den IDE-Erweiterungen und in der Desktop-App. Der Konfigurationswert bleibt <span class="mono">default</span>; <span class="mono">manual</span> wird als Alias akzeptiert (ab v2.1.200). Wer im Buch „Standardmodus“ liest, muss also unterscheiden: Manual ist der Modus, den das Kapitel beschreibt. Die Voreinstellung ist er nicht mehr. Und die Rückfrage bei Shell-Befehlen hat eine vierte Antwort bekommen, „Yes, and switch to auto mode“ (ab v2.1.247); sie ist damit zugleich der Ausstieg aus dem Modus, der sie auslöst.</p>
+          <p>Für Skripte gilt das Gegenteil: <span class="mono">claude -p</span> und das Agent SDK starten seit <b>v2.1.302</b> (16. Oktober 2026) in Manual, solange kein Modus gesetzt ist. Gefragt wird dort allerdings nicht: Was eine Freigabe bräuchte, wird abgelehnt, sofern keine <span class="mono">allow</span>-Regel greift.</p>
         </div>
         <div class="blk">
           <h4>Warum umgestellt wurde — und warum das Kapitel 8 stützt</h4>
@@ -220,41 +221,43 @@ a.viadee:hover{color:var(--blau-tief)}
           <ol class="steps">
             <li><span class="mono">/permissions</span> zeigt in einer laufenden Session den aktiven Modus. Er lässt sich jederzeit umschalten; eine selbst gesetzte Voreinstellung wird durch die Umstellung nicht überschrieben.</li>
             <li>Destruktive Operationen gehören in <span class="mono">deny</span>-Regeln, nicht in die Hoffnung auf eine Rückfrage — insbesondere <span class="mono">git push --force</span>, Löschbefehle und Produktionszugriffe.</li>
-            <li>Auf Enterprise-Plänen und bei API-Konten blieb der Auto-Modus in der ersten Ausrollphase optional. Prüfen Sie, was in Ihrer Organisation gilt.</li>
-            <li>Netzwerkbefehle wie <span class="mono">curl</span> gehen im Auto-Modus durch den Klassifikator, der <span class="mono">curl | bash</span> standardmäßig blockt. Für Skripte, die nie fragen sollen, gibt es seit v2.1.260 <span class="mono">--permission-prompts none</span>: Was eine Rückfrage auslösen würde, wird abgelehnt, der aktive Modus entscheidet weiter.</li>
+            <li>Auf Team- und Enterprise-Plänen können Administratoren den Auto-Modus zentral abschalten (Einstellung <span class="mono">disableAutoMode</span>). Prüfen Sie, was in Ihrer Organisation gilt.</li>
+            <li>Netzwerkbefehle wie <span class="mono">curl</span> gehen im Auto-Modus durch den Klassifikator, der <span class="mono">curl | bash</span> standardmäßig blockt. Für Skripte, die nie fragen sollen, gibt es seit v2.1.259 <span class="mono">--permission-prompts none</span>: Was eine Rückfrage auslösen würde, wird abgelehnt, der aktive Modus entscheidet weiter.</li>
           </ol>
           <p style="margin-top:.9rem">Kapitel 3 bringt es auf eine Formel, die durch diese Umstellung nicht falsch, sondern nur eine Stufe wichtiger geworden ist: „Vertrauen ist gut, ein explizites <span class="mono">allow</span> ist besser.“ Seit dem 14. August gilt die Umkehrung genauso — Vertrauen ist gut, ein explizites <span class="mono">deny</span> ist besser.</p>
         </div>
         <div class="fix">
           <h4>Vorschlag für den Nachdruck · Kapitel 3</h4>
-          <p>„Claude Code kennt mehrere Berechtigungsstufen. In der strengsten fragt der Agent vor jeder potenziell destruktiven Aktion nach. Voreingestellt ist auf den Abo-Plänen inzwischen der Auto-Modus: Ein separater Klassifikator prüft jede Aktion und lässt sie durchlaufen, solange sie nicht irreversibel, destruktiv oder außerhalb Ihres Arbeitsverzeichnisses ist — sonst fragt er weiterhin. Der Hintergrund dieser Umstellung ist aufschlussreich: In Anthropics eigenen Messungen erkannten Menschen bei manueller Freigabe nur einen Bruchteil der gefährlichen Befehle, weil sie fast jede Abfrage bestätigen. Was Sie wirklich schützt, sind deshalb nicht die Rückfragen, sondern die Regeln, die Sie vorher aufschreiben.“</p>
+          <p>„Claude Code kennt mehrere Berechtigungsstufen. In der strengsten fragt der Agent vor jeder potenziell destruktiven Aktion nach. Voreingestellt ist in interaktiven Sessions inzwischen der Auto-Modus: Ein separater Klassifikator prüft jede Aktion und lässt sie durchlaufen, solange sie nicht irreversibel, destruktiv oder außerhalb Ihres Arbeitsverzeichnisses ist — sonst fragt er weiterhin. Der Hintergrund dieser Umstellung ist aufschlussreich: In Anthropics eigenen Messungen erkannten Menschen bei manueller Freigabe nur einen Bruchteil der gefährlichen Befehle, weil sie fast jede Abfrage bestätigen. Was Sie wirklich schützt, sind deshalb nicht die Rückfragen, sondern die Regeln, die Sie vorher aufschreiben.“</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 32</a> · <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch, 9. August 2026</a> · <a href="https://code.claude.com/docs/en/permission-modes">Claude Code, Permission modes (4. September 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.260</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 32</a> · <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/">TechCrunch, 9. August 2026</a> · <a href="https://code.claude.com/docs/en/permission-modes">Claude Code, Permission modes (25. November 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.259, v2.1.283, v2.1.284 und v2.1.302</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
       <div class="e-top">
         <div class="e-id"><span class="e-num">E-02</span><span class="pill p-med">Eigentümerwechsel</span></div>
-        <h3>Cursor gehört seit August 2026 zu SpaceX</h3>
-        <div class="loc"><b>Kapitel 2</b>, „Cursor: Der Platzhirsch mit dem größten Ökosystem“, S. 21 · mitbetroffen: Vorwort, Kapitel 7, Kapitel 11</div>
+        <h3>Cursor gehört seit August 2026 zu SpaceX — und ist für Neukunden nur noch im Paket zu haben</h3>
+        <div class="loc"><b>Kapitel 2</b>, „Cursor: Der Platzhirsch mit dem größten Ökosystem“, S.&nbsp;21, Preisstufen S.&nbsp;22, 35, 36 · <b>Kapitel 3</b>, S.&nbsp;63–64 · mitbetroffen: Vorwort, Kapitel 7, Kapitel 11</div>
       </div>
       <div class="e-body">
         <div class="blk">
           <h4>Im Buch steht</h4>
           <div class="q">„Gegründet 2022 von Anysphere, begann Cursor als schlanker VS-Code-Fork […] Heute, im Frühjahr 2026, gehört Cursor zu den prominentesten KI-Coding-Tools weltweit, mit mehr als einer Million Nutzer.“</div>
+          <div class="q">„Hobby (kostenlos, limitierte Anfragen), Pro (20 Dollar/Monat […]), Pro+ (60 Dollar/Monat […]) und Ultra (200 Dollar/Monat […])“</div>
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>SpaceX hat Anysphere übernommen. Der Abschluss erfolgte Mitte August 2026 (Quellen nennen den 14. bzw. 15. August), das Volumen lag bei rund <b>60 Milliarden US-Dollar in Aktien</b> — die größte Übernahme eines risikokapitalfinanzierten Startups überhaupt. Cursor wird als Tochtergesellschaft in einer Division geführt, die nach der Fusion mit xAI unter dem Namen „SpaceXAI“ firmiert.</p>
-          <p>Für die tägliche Nutzung ändert sich zunächst wenig: Die Preisstufen (kostenlos / 20 / 60 / 200 US-Dollar) und der Modellzugang blieben unverändert. Am 6. August 2026 wurden die Preise einzelner Drittanbietermodelle im Token-Pool deutlich gesenkt.</p>
+          <p>SpaceX hat Anysphere übernommen. Der Abschluss erfolgte am <b>14. August 2026</b>, das Volumen lag bei rund <b>60 Milliarden US-Dollar in Aktien</b> — die größte Übernahme eines risikokapitalfinanzierten Startups überhaupt. Cursor wird als Tochtergesellschaft in der KI-Sparte geführt, die inzwischen „SpaceXSI“ heißt (beim Abschluss noch „SpaceXAI“).</p>
+          <p>Seit dem <b>12. Oktober 2026</b> gibt es Cursor für Neukunden nur noch als Teil von „The X Subscription“, zusammen mit Grok, Grok Bot und X Premium: Free, Plus (8 US-Dollar), Premium (30), Super (100) und Ultra (200), Teams ab 30 US-Dollar je Platz. Enthalten ist ein Wochenkontingent für die hauseigenen Modelle (Grok, Composer). Claude, GPT und Gemini gibt es erst ab Premium und nur zum API-Listenpreis aus vorab gekauftem Guthaben. Die Stufen des Buchs — Hobby, Pro, Pro+ und das bisherige Ultra — laufen als „Legacy“-Pläne für Bestandskunden weiter; ein Enddatum nennt Cursor nicht.</p>
         </div>
         <div class="blk">
           <h4>Warum das zählt</h4>
           <p>Das Kapitel bewertet Werkzeuge nach Funktionsumfang, Modellvielfalt und Preis. Für Leserinnen und Leser in regulierten Branchen ist die Eigentümerfrage aber ein eigenständiges Auswahlkriterium — wem gehört der Anbieter, wohin fließen Telemetrie und Code, welcher Konzernstrategie folgt das Produkt. Diese Dimension kommt im Buch nicht vor und sollte bei jeder Werkzeugentscheidung mitgeprüft werden.</p>
+          <p>Der Tarifumbau zeigt, was das praktisch heißt: Zwei Monate nach dem Abschluss folgt der Modellzugang der Konzernstrategie. Der Satz des Buchs, in Cursor lasse sich frei zwischen den Modellen der großen Anbieter wechseln, gilt für Neukunden nur noch gegen Aufpreis — und die Preistabelle in Kapitel 2 beschreibt Pläne, die man nicht mehr abschließen kann.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://seekingalpha.com/news/4633335-spacex-completes-60b-acquisition-of-cursor-as-musk-led-firm-tries-to-gain-edge-in-ai-coding">Seeking Alpha</a> · <a href="https://devops.com/spacex-to-acquire-ai-coding-leader-cursor-in-60-billion-blockbuster-deal/">DevOps.com</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://cursor.com/blog/joining-spacex">Cursor: Cursor is now a part of SpaceX</a> · <a href="https://seekingalpha.com/news/4633335-spacex-completes-60b-acquisition-of-cursor-as-musk-led-firm-tries-to-gain-edge-in-ai-coding">Seeking Alpha</a> · <a href="https://x.ai/news/x-subscription">xAI: The X Subscription (12. Oktober 2026)</a> · <a href="https://cursor.com/pricing">Cursor, Pricing (25. November 2026)</a> · <a href="https://cursor.com/docs/account/pricing/legacy-cursor-plans">Cursor-Doku: Legacy Cursor plans</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -283,7 +286,7 @@ a.viadee:hover{color:var(--blau-tief)}
           <p>Der Windsurf-Abschnitt beschreibt korrekt ein Produkt, das es in dieser Form nicht mehr gibt. Lesen Sie ihn als Beschreibung der Editor-Kategorie — der Vergleich Cascade gegen Cursors Agent Mode bleibt lehrreich —, nicht als Kaufberatung.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://devin.ai/blog/windsurf-is-now-devin-desktop">Devin: Windsurf is now Devin Desktop</a> · <a href="https://docs.devin.ai/desktop/devin-desktop-faq">Devin Desktop FAQ</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://devin.ai/blog/windsurf-is-now-devin-desktop">Devin: Windsurf is now Devin Desktop</a> · <a href="https://docs.devin.ai/desktop/devin-desktop-faq">Devin Desktop FAQ</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -299,13 +302,13 @@ a.viadee:hover{color:var(--blau-tief)}
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>Gemini CLI und die Gemini-Code-Assist-Erweiterungen haben am <b>18. Juni 2026</b> aufgehört, Anfragen von Free-, AI-Pro- und AI-Ultra-Konten zu bedienen; so hatte Google es am 19. Mai 2026 angekündigt. Nachfolger ist die <b>Antigravity CLI</b>, eine in Go geschriebene Terminal-Oberfläche, die sich mit der Desktop-Anwendung Antigravity 2.0 einen gemeinsamen Agent-Harness teilt. Enterprise-Kunden mit Gemini Code Assist und Nutzer mit eigenem API-Schlüssel werden weiter bedient.</p>
-          <p>Eingestellt ist das Projekt damit nicht. Das Repository <span class="mono">google-gemini/gemini-cli</span> ist nicht archiviert: <b>Release v0.58.0 am 1. September 2026</b>, letzte Änderung am 4. September, Lizenz Apache 2.0. Die Dokumentation trägt weiterhin den Banner, Gemini CLI werde durch Antigravity CLI ersetzt. Für Leserinnen und Leser des Buchs ändert das nichts an der Konsequenz: Wer ohne Enterprise-Vertrag oder API-Schlüssel arbeitet, ist auf die Antigravity CLI verwiesen. Auch der GSD-Installer aus Kapitel 6 führt unter den unterstützten Laufzeiten inzwischen Antigravity CLI statt Gemini CLI.</p>
+          <p>Gemini CLI und die Gemini-Code-Assist-Erweiterungen haben am <b>18. Juni 2026</b> aufgehört, Anfragen von Free-, AI-Pro- und AI-Ultra-Konten zu bedienen; so hatte Google es am 19. Mai 2026 angekündigt. Nachfolger ist die <b>Antigravity CLI</b>, eine in Go geschriebene Terminal-Oberfläche, die sich mit der Desktop-Anwendung Antigravity 2.0 einen gemeinsamen Agent-Harness teilt. Bedient werden laut README nur noch Organisationen mit Gemini-Code-Assist-Lizenz („Enterprise Code Assist only“), dazu ältere bezahlte API- und Vertex-Schlüssel.</p>
+          <p>Eingestellt ist das Projekt damit nicht. Das Repository <span class="mono">google-gemini/gemini-cli</span> ist nicht archiviert: <b>Release v0.71.1 am 24. November 2026</b>, Lizenz Apache 2.0. Das README stellt dem Projekt aber einen Warnkasten voran: kein kostenloser Zugang, keine Google-AI-Pläne, „not optimized for Gemini 4+“. Für Leserinnen und Leser des Buchs ändert das nichts an der Konsequenz: Wer ohne Unternehmenslizenz arbeitet, ist auf die Antigravity CLI verwiesen. Auch der GSD-Installer aus Kapitel 6 führt unter den unterstützten Laufzeiten inzwischen Antigravity CLI statt Gemini CLI.</p>
           <p><b>Nicht betroffen:</b> Kapitel 3 nennt den Übergang bereits korrekt („geht im Juni 2026 in Antigravity CLI über“). Dort ist keine Korrektur nötig.</p>
           <p><b>Randnotiz:</b> Die Torvalds-Anekdote in Kapitel 1 ist dadurch besser gealtert als gedacht — aus der „agent-first Coding-Umgebung“ von November 2025 ist Googles gesamte Agentenplattform geworden.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx">Virtualization Review</a> · <a href="https://ostechnix.com/google-is-replacing-gemini-cli-with-google-antigravity/">OSTechNix</a> · <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google Developers Blog, 19. Mai 2026</a> · <a href="https://github.com/google-gemini/gemini-cli/releases">gemini-cli Releases (4. September 2026)</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx">Virtualization Review</a> · <a href="https://ostechnix.com/google-is-replacing-gemini-cli-with-google-antigravity/">OSTechNix</a> · <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/">Google Developers Blog, 19. Mai 2026</a> · <a href="https://github.com/google-gemini/gemini-cli/releases">gemini-cli Releases (25. November 2026)</a> · <a href="https://github.com/google-gemini/gemini-cli/blob/main/README.md">gemini-cli README (25. November 2026)</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -321,7 +324,7 @@ a.viadee:hover{color:var(--blau-tief)}
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>Der Alias <span class="mono">claude-sonnet-4-6</span> verweist auf die Generation vor Sonnet 5. Er funktioniert noch: Anthropics Deprecations-Seite führt ihn als <b>„Active“</b> mit einer Retirement-Zusage nicht vor dem <b>17. Februar 2027</b>, die Modellübersicht unter „Legacy (still available)“. Aber Codelistings werden wörtlich übernommen, und ein Buch lebt länger als ein Modell-Alias. Das Listing wird an dem Tag scheitern, an dem das Modell zurückgezogen wird. Die Dokumentation der Action zeigt inzwischen <span class="mono">claude-sonnet-5</span> als Beispiel; besser ist, den Modellnamen gar nicht ins Listing zu schreiben.</p>
+          <p>Der Alias <span class="mono">claude-sonnet-4-6</span> liegt inzwischen zwei Generationen zurück; aktuell ist Sonnet 5.5 (seit 28. September 2026). Er funktioniert noch: Anthropics Deprecations-Seite führt ihn als <b>„Active“</b> mit einer Retirement-Zusage nicht vor dem <b>17. Februar 2027</b>. Aber Codelistings werden wörtlich übernommen, und ein Buch lebt länger als ein Modell-Alias. Das Listing wird an dem Tag scheitern, an dem das Modell zurückgezogen wird — der Vorgänger <span class="mono">claude-sonnet-4-5</span> ist am 30. November 2026 so weit. Die Dokumentation der Action nennt in ihren Beispielen inzwischen <span class="mono">claude-sonnet-5</span> und <span class="mono">claude-opus-5-5</span>; besser ist, den Modellnamen gar nicht ins Listing zu schreiben.</p>
           <pre># Entweder den Alias weglassen und den Kontostandard nutzen:
 claude_args: "--max-turns 10"
 
@@ -334,14 +337,14 @@ claude_args: "--max-turns 10 --model &lt;aktueller-alias&gt;"</pre>
           <p>In ein Codebeispiel, das jahrelang in einem Buch steht, gehört kein Modellname. Das gilt auch für die Neuauflage.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 34</a> · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">Anthropic, Model deprecations (4. September 2026)</a> · <a href="https://code.claude.com/docs/en/github-actions">Claude Code, GitHub Actions (4. September 2026)</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://code.claude.com/docs/en/whats-new">Claude Code, What’s new — Woche 34</a> · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">Anthropic, Model deprecations (25. November 2026)</a> · <a href="https://code.claude.com/docs/en/github-actions">Claude Code, GitHub Actions (25. November 2026)</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
       <div class="e-top">
         <div class="e-id"><span class="e-num">E-06</span><span class="pill p-med">Projektlage</span></div>
         <h3>Die Projektlage von GSD ist im Buch unvollständig dargestellt</h3>
-        <div class="loc"><b>Kapitel 6</b>, „Von V1 zu V2: Prompts werden zur Plattform“, S. 109 · mitbetroffen: Quellenverzeichnis, Kapitel 7</div>
+        <div class="loc"><b>Kapitel 6</b>, „Von V1 zu V2: Prompts werden zur Plattform“, S.&nbsp;109 · Voraussetzungen, S.&nbsp;115 · mitbetroffen: Quellenverzeichnis, Kapitel 7</div>
       </div>
       <div class="e-body">
         <div class="blk">
@@ -349,11 +352,12 @@ claude_args: "--max-turns 10 --model &lt;aktueller-alias&gt;"</pre>
           <div class="q">„GSD V1 (ursprünglich github.com/gsd-build/get-shit-done, seit Mai 2026 als gsd-core unter github.com/open-gsd weiterentwickelt) …“</div>
         </div>
         <div class="blk">
-          <h4>Bestätigt</h4>
-          <p>Die technischen Angaben des Buchs stimmen. Beide abgedruckten Installationsbefehle sind weiterhin die offiziell empfohlenen, und auch die Zwei-Linien-Darstellung trifft zu:</p>
+          <h4>Bestätigt — mit einer Ausnahme</h4>
+          <p>Die technischen Angaben des Buchs stimmen bis auf eine. Beide abgedruckten Installationsbefehle sind weiterhin die offiziell empfohlenen, und auch die Zwei-Linien-Darstellung trifft zu:</p>
           <pre>npx @opengsd/gsd-core@latest   # V1 / Core
 npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
-          <p>Beide Pakete werden aktiv gepflegt: <span class="mono">@opengsd/gsd-core</span> 1.12.0 vom 30. August 2026, <span class="mono">@opengsd/gsd-pi</span> 1.18.0 vom 4. September 2026. <span class="mono">gsd-core</span> ist mit rund 9.100 Sternen das Flaggschiff, <span class="mono">gsd-pi</span> liegt bei rund 1.200.</p>
+          <p>Beide Pakete werden aktiv gepflegt: <span class="mono">@opengsd/gsd-core</span> 1.23.0 vom 23. November 2026, <span class="mono">@opengsd/gsd-pi</span> 1.23.0 vom 29. Oktober 2026. <span class="mono">gsd-core</span> ist mit rund 11.800 Sternen das Flaggschiff, <span class="mono">gsd-pi</span> liegt bei rund 1.400.</p>
+          <p>Die Ausnahme ist die Voraussetzung auf S. 115, „Node.js ab Version 22 (empfohlen: Version 24 LTS)“: <span class="mono">@opengsd/gsd-core</span> verlangt seit Version 1.11.0 (19. August 2026) <b>Node.js 24 oder neuer</b>. Für <span class="mono">@opengsd/gsd-pi</span> genügt weiterhin Node.js 22 (ab 22.18).</p>
         </div>
         <div class="blk">
           <h4>Was fehlt: der Anlass</h4>
@@ -374,7 +378,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
             <tbody>
               <tr><td><span class="mono">get-shit-done-cc</span></td><td><span class="mono">@opengsd/gsd-core</span></td><td>deprecated seit 23. Mai 2026</td></tr>
               <tr><td><span class="mono">gsd-pi</span> (ungescoped)</td><td><span class="mono">@opengsd/gsd-pi</span></td><td>deprecated seit 23. Mai 2026</td></tr>
-              <tr><td><span class="mono">@gsd-build/sdk</span></td><td><span class="mono">@opengsd/gsd-sdk</span></td><td>kein Marker, seit 27. März 2026 unverändert</td></tr>
+              <tr><td><span class="mono">@gsd-build/sdk</span></td><td>kein Ersatz — <span class="mono">@opengsd/gsd-sdk</span> trägt auf npm selbst den Vermerk „Package no longer supported“ (Version 1.1.0, unverändert seit 31. Mai 2026)</td><td>kein Marker, seit 27. März 2026 unverändert</td></tr>
               <tr><td><span class="mono">@opengsd/get-shit-done-redux</span></td><td><span class="mono">@opengsd/gsd-core</span></td><td>deprecated, verweist auf den neuen Namen</td></tr>
             </tbody>
           </table>
@@ -384,7 +388,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p><b>Unberührt bleibt alles Inhaltliche.</b> Context Rot, die Iron Rule, die Hierarchie Milestone → Slice → Task, Wave Execution, Crash Recovery, Stuck Detection, Verifikations-Gates und Kostendeckel sind Muster, keine Produkteigenschaften. Sie gelten unabhängig davon, wer das Repository verwaltet — und sie sind 2026 dabei, Branchenstandard zu werden.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://github.com/open-gsd">Open GSD</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/109">Discussion #109: Why the fork</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/433">Discussion #433: Installation Guide</a> · <a href="https://github.com/open-gsd/gsd-core/issues/518">Issue #518: Umbenennung zu gsd-core (30. Mai 2026)</a> · <a href="https://www.npmjs.com/package/get-shit-done-cc">npm: get-shit-done-cc (4. September 2026)</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/open-gsd">Open GSD</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/109">Discussion #109: Why the fork</a> · <a href="https://github.com/open-gsd/gsd-core/discussions/433">Discussion #433: Installation Guide</a> · <a href="https://github.com/open-gsd/gsd-core/issues/518">Issue #518: Umbenennung zu gsd-core (30. Mai 2026)</a> · <a href="https://www.npmjs.com/package/get-shit-done-cc">npm: get-shit-done-cc</a> · <a href="https://www.npmjs.com/package/@opengsd/gsd-sdk">npm: @opengsd/gsd-sdk (25. November 2026)</a> · <a href="https://github.com/open-gsd/gsd-core/blob/next/CHANGELOG.md">gsd-core CHANGELOG, 1.11.0</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -415,7 +419,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>„Die METR-Studie zeigt, dass Produktivitätsgewinne nicht garantiert sind. Die Folgemessung von 2026 deutet zwar auf vorsichtige Gewinne, aber METR selbst stuft sie als nicht belastbar ein — aus einem Grund, der mehr über die Gegenwart sagt als jede Prozentzahl: Es fanden sich kaum noch Entwickler, die für die Kontrollgruppe ohne KI arbeiten wollten, und die Zeitmessung selbst versagt, sobald mehrere Agenten parallel laufen. Die Frage, ob KI-Werkzeuge Entwickler schneller machen, wird gerade unbeantwortbar — nicht weil die Antwort unklar wäre, sondern weil das Gegenexperiment verschwindet.“</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://metr.org/blog/2026-02-24-uplift-update/">METR: We are Changing our Developer Productivity Experiment Design</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quelle</b><a href="https://metr.org/blog/2026-02-24-uplift-update/">METR: We are Changing our Developer Productivity Experiment Design</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -431,11 +435,11 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
         </div>
         <div class="blk">
           <h4>Richtig ist</h4>
-          <p>Aider ist weiterhin gepflegt und funktionsfähig, hat aber deutlich an Tempo verloren: seit August 2025 kein getaggter Release, letzter Repository-Push im Mai 2026. Vor allem ist die Modellempfehlung der Projektdokumentation nicht auf dem Stand aktueller Frontier-Modelle — dort stehen weiterhin Gemini 2.5 Pro, Claude 3.7 Sonnet, o3/o4-mini und GPT-4.1.</p>
+          <p>Aider ist weiterhin gepflegt und funktionsfähig, hat aber deutlich an Tempo verloren: Das letzte GitHub-Release (v0.86.0) stammt vom 9. August 2025, auf PyPI erschien zuletzt 0.86.2 am 12. Februar 2026, der letzte Repository-Push datiert vom 22. Mai 2026. Vor allem ist die Modellempfehlung der Projektdokumentation nicht auf dem Stand aktueller Frontier-Modelle — dort stehen weiterhin Gemini 2.5 Pro, Claude 3.7 Sonnet, o3/o4-mini und GPT-4.1.</p>
           <p>Die Einordnung des Buchs — schlanker Klassiker mit vorbildlicher Git-Integration, der die Konvention der atomaren Commits geprägt hat — bleibt richtig. Die Empfehlung an Einsteiger ist es nicht mehr. Wer heute einen quelloffenen Terminal-Agenten sucht, findet in OpenCode das aktivere Projekt.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://www.morphllm.com/comparisons/opencode-vs-aider">Morph: OpenCode vs Aider, Juni 2026</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/Aider-AI/aider/releases">Aider Releases</a> · <a href="https://pypi.org/project/aider-chat/">PyPI: aider-chat</a> · <a href="https://aider.chat/docs/llms.html">Aider-Doku: Connecting to LLMs</a> · <a href="https://www.morphllm.com/comparisons/opencode-vs-aider">Morph: OpenCode vs Aider</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e med">
@@ -472,12 +476,13 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           </table>
         </div>
         <div class="blk">
-          <p>Unverändert: <span class="mono">bmad-help</span>, <span class="mono">bmad-party-mode</span>, <span class="mono">bmad-brainstorming</span>, <span class="mono">bmad-create-epics-and-stories</span>, <span class="mono">npx bmad-method install</span> und <span class="mono">_bmad/custom/&lt;skill&gt;.toml</span>. Geändert mit 6.11: Der Quellbaum heißt <span class="mono">agents / plan / ship</span>, den Ordner <span class="mono">1-analysis</span> gibt es nicht mehr; die Konfiguration liegt in TOML-Dateien, die <span class="mono">config.yaml</span> des Buchs gilt als Legacy; <span class="mono">uv</span> mit Python 3.11 ist Pflicht. <b>Version 6.12.0 vom 3. September 2026</b> zieht die Schraube an: Die Weiterleitungen von alten auf neue Namen („Shims“) gibt es bei einer Neuinstallation nur noch mit <span class="mono">--shims</span>.</p>
+          <p>Unverändert: <span class="mono">bmad-help</span>, <span class="mono">bmad-party-mode</span>, <span class="mono">bmad-brainstorming</span>, <span class="mono">bmad-create-epics-and-stories</span>, <span class="mono">npx bmad-method install</span> und <span class="mono">_bmad/custom/&lt;skill&gt;.toml</span>. Geändert mit 6.11: Der Quellbaum heißt <span class="mono">agents / plan / ship</span>, den Ordner <span class="mono">1-analysis</span> gibt es nicht mehr; die Konfiguration liegt in TOML-Dateien, die <span class="mono">config.yaml</span> des Buchs gilt als Legacy; <span class="mono">uv</span> ist Pflicht. <b>Version 6.12.0 vom 3. September 2026</b> zieht die Schraube an: Die Weiterleitungen von alten auf neue Namen („Shims“) gibt es bei einer Neuinstallation nur noch mit <span class="mono">--shims</span>.</p>
+          <p>Stabil ist <b>6.12.4 vom 14. Oktober 2026</b>; die Linie liegt eingefroren auf dem Branch <span class="mono">V6.12</span>, und <span class="mono">npx bmad-method install</span> installiert weiterhin sie. Auf dem Hauptzweig des Repositorys steht seit dem 11. Oktober 2026 <b>Version 7 als Preview Alpha</b>, mit eigenem Installationsweg (<span class="mono">npx skills add …</span>) und abermals anderen Namen: <span class="mono">bmad</span> statt <span class="mono">bmad-help</span>, kein <span class="mono">bmad-prd</span>, kein <span class="mono">bmad-create-epics-and-stories</span>, kein <span class="mono">bmad-sprint-planning</span>, dafür ein neuer sechster Agent (Sofia, Product Owner). Veröffentlicht ist Version 7 nicht; Repository-Startseite und Online-Doku beschreiben sie trotzdem schon.</p>
         </div>
         <div class="blk">
           <h4>Warum das zählt</h4>
           <p>Kapitel 7 ist ein durchgängiges Praxisbeispiel, und die Befehlskette PRD → Architektur → Readiness-Check → Story ist sein Rückgrat. Wer heute frisch installiert, findet diese Namen nicht; einer davon existiert nicht mehr. Die Methode dahinter — Phasen, Artefakte, Rollen — ist unverändert, und das Buch beschreibt sie zu Recht als Muster, nicht als Befehlsliste. Auch Paige kostet das Buch keine These, nur eine Zahl; die Doku spricht von „on hiatus“.</p>
-          <p>Die Richtung bestätigt, was Kapitel 7 mit dem Quick Flow andeutet: Der Aufwand richtet sich nach der Aufgabe, nicht nach dem Framework. BMAD hat das in 6.12 zum Grundsatz gemacht — „Build decides how much ceremony a change needs after investigating it, not before.“ Einen Ersatztext für den Nachdruck gibt es bewusst nicht: Zwischen 6.11 und 6.12 lagen knapp vier Wochen, Version 7 ist angekündigt.</p>
+          <p>Die Richtung bestätigt, was Kapitel 7 mit dem Quick Flow andeutet: Der Aufwand richtet sich nach der Aufgabe, nicht nach dem Framework. BMAD hat das in 6.12 zum Grundsatz gemacht — „Build decides how much ceremony a change needs after investigating it, not before.“ Einen Ersatztext für den Nachdruck gibt es bewusst nicht: Zwischen 6.11 und 6.12 lagen knapp vier Wochen, Version 7 liegt als Preview vor.</p>
         </div>
         <div class="blk">
           <h4>Was Sie konkret tun sollten</h4>
@@ -486,10 +491,145 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
             <li>Den Ablauf aus Kapitel 7 übersetzen: <span class="mono">bmad-prd</span>, <span class="mono">bmad-architecture</span>, <span class="mono">bmad-create-epics-and-stories</span>, <span class="mono">bmad-sprint-planning</span>, <span class="mono">bmad-build</span>, <span class="mono">bmad-walkthrough</span>.</li>
             <li>Für ältere Anleitungen bei der Installation <span class="mono">--shims</span> mitgeben; dann leiten die alten Namen weiter.</li>
             <li>Anpassungsdateien umbenennen (<span class="mono">bmad-quick-dev.toml</span> → <span class="mono">bmad-build.toml</span>), <span class="mono">uv</span> installieren.</li>
+            <li>Beim Nachschlagen im Repository den Branch <span class="mono">V6.12</span> wählen. Der Hauptzweig und die Online-Doku zeigen Version 7, deren Skill-Namen weder zum Buch noch zu dieser Tabelle passen.</li>
           </ol>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/CHANGELOG.md">BMAD CHANGELOG, v6.7.0 bis v6.12.0 (17. Mai bis 3. September 2026)</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/src/bmm-skills/v6-shims/README.md">v6-shims/README.md (Umbenennungstabelle, Stand 6.11)</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/releases">BMAD Releases</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/docs/reference/skills-and-agents.md">Doku: Skills and agents</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/V6.12/CHANGELOG.md">BMAD CHANGELOG, Branch V6.12, v6.7.0 bis v6.12.4</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/v6.12.4/src/bmm-skills/v6-shims/README.md">v6-shims/README.md (Umbenennungstabelle, Stand 6.12.4)</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/releases">BMAD Releases</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/V6.12/docs/reference/skills-and-agents.md">Doku: Skills and agents (Branch V6.12)</a> · <a href="https://github.com/bmad-code-org/BMAD-METHOD/blob/main/README.md">README des Hauptzweigs (Version 7, Preview)</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-10</span><span class="pill p-med">Befehl entfernt</span></div>
+        <h3>Spec Kit hat /speckit.taskstoissues aus dem Kern entfernt — und zählt inzwischen sechs Kernbefehle</h3>
+        <div class="loc"><b>Kapitel 5</b>, Abschnitt 5.13, S.&nbsp;101–103</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Neuere Spec-Kit-Versionen ergänzen die Kern-Commands außerdem um /speckit.taskstoissues“</div>
+          <div class="q">„/speckit.constitution … /speckit.specify … /speckit.plan … /speckit.tasks … /speckit.implement“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Spec Kit steht seit dem 21. August 2026 bei Version 1.x, aktuell <b>1.4.5 vom 25. November 2026</b>. Den Befehl <span class="mono">/speckit.taskstoissues</span> gibt es im Kern nicht mehr: abgekündigt mit 1.1.3 (9. Oktober 2026), <b>entfernt mit 1.3.0 am 3. November 2026</b>. Die Funktion lebt in der mitgelieferten Erweiterung <span class="mono">github</span> weiter, die man ausdrücklich hinzufügen muss.</p>
+          <p>Die fünf Befehle, auf denen der Ablauf des Kapitels beruht, existieren unverändert, ebenso die drei Gates <span class="mono">clarify</span>, <span class="mono">checklist</span> und <span class="mono">analyze</span>; auch die abgedruckte Installationszeile funktioniert weiter. Dazugekommen ist ein sechster Kernbefehl, <span class="mono">converge</span>, der nach der Implementierung prüft, ob Code und Spezifikation übereinstimmen. Es gibt ihn seit Juni 2026 (0.11.2); er hat es nicht mehr ins Buch geschafft. README und Quickstart schreiben die Befehle inzwischen durchgehend mit Bindestrich (<span class="mono">/speckit-plan</span>) — das ist die Form, in der Claude Code sie als Skills führt.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum das zählt</h4>
+          <p>Wer heute frisch installiert und der Anleitung folgt, findet einen der genannten Befehle nicht. Der Rest des Kapitels trägt: Constitution, Spezifikation, Plan, Tasks, Implementierung. Dass Spec Kit die Anbindung an GitHub Issues aus dem Kern in eine Erweiterung verlegt, passt zu dem, was das Kapitel über die Erweiterbarkeit des Toolkits schreibt.</p>
+        </div>
+        <div class="blk">
+          <h4>Was Sie konkret tun sollten</h4>
+          <ol class="steps">
+            <li>Für die Übergabe an GitHub Issues: <span class="mono">specify extension add github</span>, danach <span class="mono">/speckit.github.taskstoissues</span> (in Claude Code <span class="mono">/speckit-github-taskstoissues</span>).</li>
+            <li>Findet Ihr Agent einen Befehl in der Punkt-Schreibweise nicht, versuchen Sie die Bindestrich-Form.</li>
+            <li>Nach <span class="mono">implement</span> den neuen Befehl <span class="mono">converge</span> laufen lassen, bis er „Converged“ meldet.</li>
+            <li>Die Installation geht inzwischen auch ohne Git-Adresse: <span class="mono">uv tool install specify-cli</span>.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/github/spec-kit/blob/main/CHANGELOG.md">Spec Kit CHANGELOG, 1.0.13, 1.1.3 und 1.3.0</a> · <a href="https://github.com/github/spec-kit/pull/5053">Pull Request #5053: remove taskstoissues from core</a> · <a href="https://github.com/github/spec-kit/blob/main/extensions/github/README.md">Erweiterung github, README</a> · <a href="https://github.com/github/spec-kit/blob/main/README.md">Spec Kit README (25. November 2026)</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
+    </article>
+
+    <article class="e med">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-11</span><span class="pill p-med">Produkt ersetzt</span></div>
+        <h3>Unter dem Namen OpenHands liegt seit Ende Juli 2026 ein anderes Produkt</h3>
+        <div class="loc"><b>Kapitel 9</b>, Abschnitt 9.8, S.&nbsp;168</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Mit rund 71 000 GitHub-Sternen (Stand März 2026) ist es zwar weit von OpenClaws Rekordzahlen entfernt“</div>
+          <p style="margin-top:.9rem">Das Buch beschreibt OpenHands als autonomen Entwickler-Agenten mit SDK, CLI und Web-GUI, dessen Aktionen jeweils in einem Sandbox-Container laufen, und nennt als Fundort <span class="mono">github.com/All-Hands-AI/OpenHands</span>.</p>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Die Adresse leitet auf <span class="mono">OpenHands/OpenHands</span> weiter, und dort liegt seit dem <b>27. Juli 2026</b> etwas anderes: <b>Agent Canvas</b>, laut README „the self-hosted developer control center for coding agents and automations“. Es steuert neben dem eigenen Agenten auch Claude Code, Codex, Gemini CLI und OpenCode. Der bisherige Code wurde am selben Tag in das Repository <span class="mono">OpenHands/legacy</span> verschoben, das archiviert ist. Die Doku nennt die OpenHands-CLI „no longer actively maintained“ und die lokale Oberfläche „deprecated“; das SDK wird in einem eigenen Repository weitergeführt.</p>
+          <p>Für das Sicherheitsargument des Kapitels wichtiger: Der Schnellstart nennt als <b>erste</b> Option den Betrieb ohne Sandbox, mit dem Hinweis, der Agent habe dann vollen Zugriff auf das Dateisystem. Die Docker-Sandbox ist Option 2. Die Lizenz bleibt MIT. Der Umbau fiel in die Tage der Drucklegung; das Buch konnte ihn nicht mehr aufnehmen.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum das zählt</h4>
+          <p>Das Kapitel führt OpenHands als Alternative zu OpenClaw an, und ein Teil des Arguments ist die Isolation jeder Aktion. Wer dem Link folgt, findet heute kein Agentenwerkzeug, sondern eine Leitstelle für mehrere — dieselbe Bewegung, die Teil C dieser Seite für die großen Anbieter beschreibt. Und er findet eine Schnellstart-Anleitung, deren bequemster Weg ohne Isolation auskommt.</p>
+        </div>
+        <div class="blk">
+          <h4>Was Sie konkret tun sollten</h4>
+          <ol class="steps">
+            <li>Beim Schnellstart die Variante mit Docker-Sandbox wählen, nicht die erste.</li>
+            <li>Wer den im Buch beschriebenen Agenten sucht: Er steckt im Software Agent SDK und in Agent Canvas, nicht mehr in einer eigenen CLI.</li>
+            <li>Ältere Anleitungen, die <span class="mono">openhands serve</span> verwenden, beziehen sich auf den archivierten Stand.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://github.com/OpenHands/OpenHands/pull/15397">OpenHands, Pull Request #15397 (27. Juli 2026)</a> · <a href="https://github.com/OpenHands/OpenHands/blob/main/README.md">OpenHands README (25. November 2026)</a> · <a href="https://github.com/OpenHands/legacy">OpenHands/legacy (archiviert)</a> · <a href="https://docs.openhands.dev/">OpenHands-Doku</a> · <a href="https://openhands.dev/blog/introducing-agent-canvas">OpenHands: Introducing Agent Canvas (16. Juni 2026)</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
+    </article>
+
+    <article class="e hi">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-12</span><span class="pill p-hi">Sicherheitsrelevant</span></div>
+        <h3>Cursors Marketplace hat am 29. Oktober 2026 manipulierte Kopien der Claude-Code-Erweiterung ausgeliefert</h3>
+        <div class="loc"><b>Kapitel 3</b>, IDE-Integrationen, S.&nbsp;59 · <b>Kapitel 2</b>, „Cursor: Der Platzhirsch mit dem größten Ökosystem“, S.&nbsp;21</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„offizielle Integrationen für die beiden dominierenden Entwicklungsumgebungen: Visual Studio Code und JetBrains-IDEs“ <span class="mono">(K3)</span></div>
+          <div class="q">„mit Ausnahme einiger proprietärer Microsoft-Extensions wie Pylance oder C/C++, die Microsoft seit 2025 für VS-Code-Forks sperrt“ <span class="mono">(K2)</span></div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Beide Sätze stimmen. Was zwischen ihnen fehlt: Ein VS-Code-Fork wie Cursor bezieht Erweiterungen nicht aus Microsofts Marketplace, sondern aus einem eigenen, und der ist ein weiteres Glied der Lieferkette. Am <b>29. Oktober 2026</b> lieferte Cursors Marketplace rund elf Stunden lang (etwa 2:27 bis 13:35 Uhr pazifischer Zeit) manipulierte Kopien der Erweiterung <span class="mono">Anthropic.claude-code</span> in den Versionen <b>2.1.312 und 2.1.313</b> für macOS und Windows aus.</p>
+          <p>Der Schadcode trug einen SSH-Schlüssel mit dem Kommentar <span class="mono">svc-telemetry</span> ein, meldete Rechner- und Nutzerdaten an den Angreifer, versuchte einen Reverse-SSH-Tunnel aufzubauen und richtete sich dauerhaft ein — unter macOS als LaunchAgent, unter Windows als geplante Aufgabe „SysMon“. Der Tunnel scheiterte laut Cursor meist an Fehlern im Schadcode; Schlüssel und Persistenz wurden trotzdem angelegt. Nach Cursors Aufarbeitung vom 13. November 2026 erhielten <b>höchstens 5.000 Nutzer</b> die manipulierten Kopien. Ausgangspunkt war ein Zugriffsschlüssel, den Cursor an den Dienstleister Fireworks ausgegeben hatte und der dort offengelegt wurde. Die Quelle des Marketplace, Open VSX, war nicht betroffen, Anthropics eigene Vertriebswege ebenfalls nicht.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum das zählt</h4>
+          <p>Das Buch empfiehlt die IDE-Integration zu Recht, und wer sie in VS Code oder JetBrains nutzt, ist nicht berührt. Aber Kapitel 8 behandelt die Lieferkette vor allem über Pakete und MCP-Server; die Erweiterung, in der der Agent selbst läuft, kommt als Angriffsfläche nicht vor. Der Vorfall zeigt, dass sie eine ist — und er traf nicht den Hersteller der Erweiterung, sondern den Verteiler dazwischen.</p>
+        </div>
+        <div class="blk">
+          <h4>Was Sie konkret tun sollten</h4>
+          <ol class="steps">
+            <li>Betroffen sein kann, wer die Claude-Code-Erweiterung am 29. Oktober 2026 in Cursor installiert oder aktualisiert hat (nach mitteleuropäischer Zeit zwischen etwa 10:27 und 21:35 Uhr).</li>
+            <li>Nach <span class="mono">svc-telemetry</span> suchen: unter macOS in <span class="mono">~/.ssh/authorized_keys</span>, unter Windows in <span class="mono">%USERPROFILE%\.ssh\authorized_keys</span> und in <span class="mono">C:\ProgramData\ssh\administrators_authorized_keys</span>.</li>
+            <li>Persistenz prüfen: unter macOS <span class="mono">~/Library/LaunchAgents/com.apple.sysmond.plist</span>, unter Windows die geplante Aufgabe „SysMon“ und <span class="mono">sysmon.cmd</span> im Autostart-Ordner.</li>
+            <li>Deinstallieren genügt laut Cursor unter Umständen nicht, weil die Persistenz eigenständig weiterläuft. Der Sicherheitshinweis beschreibt die Bereinigung.</li>
+            <li>Nach einem Fund: Zugangsdaten und Sitzungen erneuern, die vom Rechner aus erreichbar waren — von einem anderen, sauberen System aus.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://cursor.com/en/blog/claude-code-extension-security-notice">Cursor: Security notice (29. Oktober 2026)</a> · <a href="https://cursor.com/blog/security-incident-update">Cursor: Security incident update (13. November 2026)</a> · <a href="https://www.csoonline.com/article/4243210/cursor-removes-malicious-claude-code-extension-after-ssh-backdoor-attempt.html">CSO Online</a> · <a href="https://www.ox.security/blog/malicious-claude-code-extension-cursor-ssh-backdoor/">OX Security</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
+    </article>
+
+    <article class="e hi">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">E-13</span><span class="pill p-hi">Sicherheitsrelevant</span></div>
+        <h3>Lovable baut neue Projekte auf TanStack Start; dort wurde im September 2026 eine kritische XSS-Lücke bekannt</h3>
+        <div class="loc"><b>Kapitel 2</b>, Abschnitt 2.7, S.&nbsp;27, Vergleichsmatrix S.&nbsp;33 · <b>Kapitel 8</b>, Abschnitt 8.4, S.&nbsp;149</div>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <h4>Im Buch steht</h4>
+          <div class="q">„Die Plattform setzt auf einen festen Stack: React + Vite + Tailwind + shadcn/ui als Frontend, Supabase […] als tief integriertes Backend“</div>
+        </div>
+        <div class="blk">
+          <h4>Richtig ist</h4>
+          <p>Neue Lovable-Projekte entstehen seit dem <b>13. Mai 2026</b> auf <b>TanStack Start</b> mit serverseitigem Rendering, Enterprise-Projekte seit dem 22. Juni 2026. Ältere Projekte bleiben auf React und Vite; der Umstieg ist freiwillig. Dieser Wechsel lag vor Redaktionsschluss.</p>
+          <p>Neu ist die Folge: Am <b>30. September 2026</b> hat TanStack eine kritische reflektierte XSS-Lücke in der Verarbeitung von Server-Function-Antworten veröffentlicht, <b>CVE-2026-102989</b>. Betroffen sind die Versionen ab 1.143.12; behoben ist sie in <span class="mono">@tanstack/react-start</span> 1.168.60. Gefunden hat sie Lovables eigenes Sicherheitsteam am 14. September. Lovable schützt die bei sich gehosteten Apps; wer seine App anderswo betreibt, ist davon nach Lovables eigener Auskunft nicht gedeckt und muss selbst aktualisieren und neu ausliefern.</p>
+        </div>
+        <div class="blk">
+          <h4>Warum das zählt</h4>
+          <p>Kapitel 8 erzählt am Beispiel Lovable, wie eine Voreinstellung der Plattform zur Lücke in vielen Apps wurde. Hier wiederholt sich das Muster eine Ebene tiefer: Der Stack, den die Plattform wählt, ist eine Abhängigkeit, die man mit dem ersten Prompt übernimmt — und beim Export mitnimmt, ohne den Schutz der Plattform. Die Stack-Beschreibung des Buchs gilt nur noch für Projekte, die vor dem Wechsel angelegt wurden.</p>
+        </div>
+        <div class="blk">
+          <h4>Was Sie konkret tun sollten</h4>
+          <ol class="steps">
+            <li>In der <span class="mono">package.json</span> nachsehen, ob <span class="mono">@tanstack/react-start</span> vorkommt. Wenn nicht, läuft das Projekt auf dem alten Stack und ist von dieser Lücke nicht berührt.</li>
+            <li>Bei Lovable gehostet: die Sicherheitsseite des Projekts öffnen; betroffene Projekte lassen sich dort aktualisieren.</li>
+            <li>Anderswo gehostet: <span class="mono">@tanstack/react-start</span> auf 1.168.60 oder neuer aktualisieren, im Lockfile prüfen, dass <span class="mono">@tanstack/start-server-core</span> bei 1.169.39 oder neuer steht, dann neu bauen und neu ausliefern. Ein Update nur der lokalen Installation behebt die ausgelieferte App nicht.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://tanstack.com/blog/tanstack-start-security-update-cve-2026-102989">TanStack: Security update, CVE-2026-102989 (30. September 2026)</a> · <a href="https://lovable.dev/blog/how-lovable-protects-your-app-from-a-tanstack-start-vulnerability">Lovable: How Lovable protects your app (30. September 2026)</a> · <a href="https://docs.lovable.dev/features/upgrade-to-tanstack-start">Lovable-Doku: Upgrade to TanStack Start</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
   </div>
@@ -511,17 +651,18 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
       </div>
       <div class="e-body">
         <div class="blk">
-          <p>Das Buch nennt Claude Opus 4.7 und 4.8 mit ihren Benchmarkwerten und beschreibt ein Kontextfenster von 200.000 Token mit optionaler Erweiterung auf eine Million. Inzwischen ist die Claude-5-Familie da, und sie hat drei Stufen statt zwei:</p>
+          <p>Das Buch nennt Claude Opus 4.7 und 4.8 mit ihren Benchmarkwerten und beschreibt ein Kontextfenster von 200.000 Token mit optionaler Erweiterung auf eine Million. Inzwischen hat die Claude-5-Familie mehrfach nachgelegt, und sie hat vier Stufen statt zwei:</p>
           <ul class="bul">
-            <li><b>Claude Sonnet 5</b> — Ende Juni 2026, Standardmodell für Pro und Team Standard, natives Kontextfenster von einer Million Token, adaptives Reasoning standardmäßig aktiv. Seit dem 1. September 2026 kostet es dauerhaft <b>2 / 10 US-Dollar</b> je Million Token; der Satz war als Einführungspreis bis Ende August angekündigt, die Rückkehr auf 3 / 15 findet laut Preisseite nicht statt. Die Kostenrechnung des Buchs (S. 64: 3 / 15 für Sonnet) liegt damit um ein Drittel zu hoch.</li>
-            <li><b>Claude Opus 5</b> — 24. Juli 2026, Standard für Max, Team Premium und Enterprise, ebenfalls eine Million Token Kontext. Der Preis blieb gegenüber Opus 4.8 bei 5 / 25 US-Dollar; ein Fast Mode ist zu 10 / 50 verfügbar.</li>
-            <li><b>Claude Fable 5.1</b> — 1. September 2026, oberhalb von Opus, eine Million Token Kontext, 10 / 50 US-Dollar je Million Token; der Vorgänger Fable 5 erschien am 9. Juni 2026. Die Schwestervariante Claude Mythos 5.1 gibt es nur auf Einladung (Project Glasswing). In Claude Code (laut Doku ab v2.1.255, laut Changelog v2.1.257) wählt man die Stufe ausdrücklich mit <span class="mono">/model fable</span>; der Alias <span class="mono">best</span> nimmt Fable, wo verfügbar, sonst Opus. Voreinstellung ist Fable auf keinem Plan.</li>
+            <li><b>Claude Fable 5.2</b> — 9. November 2026, oberhalb von Opus, <b>8 / 40 US-Dollar</b> je Million Token. In Claude Code (ab v2.1.321) wählt man die Stufe ausdrücklich mit <span class="mono">/model fable</span>; Voreinstellung ist Fable auf keinem Plan.</li>
+            <li><b>Claude Opus 5.5</b> — 22. September 2026, <b>4 / 20 US-Dollar</b>. In Claude Code das Standardmodell auf allen Plänen — Pro, Max, Ultra, Team, Enterprise — und mit API-Schlüssel. Der Vorgänger Opus 5 vom 24. Juli kostete 5 / 25.</li>
+            <li><b>Claude Sonnet 5.5</b> — 28. September 2026, <b>2 / 10 US-Dollar</b>, in Claude Code auf keinem Plan mehr Voreinstellung. Die Kostenrechnung des Buchs (S. 64: 3 / 15 für Sonnet) liegt um ein Drittel zu hoch.</li>
+            <li><b>Claude Haiku 5.5</b> — 7. Oktober 2026, <b>0,10 / 0,50 US-Dollar</b>; bei Prompts über 100.000 Token 0,50 / 2,50.</li>
           </ul>
-          <p>Das Verhältnis Eingabe zu Ausgabe bleibt auf allen drei Stufen 1 : 5.</p>
-          <p><b>Die eigentliche Nachricht ist nicht die neue Zahl, sondern die Taktzahl:</b> sechs Frontier-Veröffentlichungen zwischen Mitte April und Anfang September 2026. Ein gedrucktes Buch kann diesem Rhythmus nicht folgen. Was das Kapitel dazu selbst schreibt, bleibt uneingeschränkt gültig: <em>„Benchmarks messen das, was messbar ist, nicht unbedingt das, was wichtig ist.“</em></p>
+          <p>Alle vier haben ein natives Kontextfenster von einer Million Token. Das Verhältnis Eingabe zu Ausgabe bleibt auf allen vier Stufen 1 : 5. Der Alias <span class="mono">best</span> zeigt seit v2.1.321 auf dasselbe Modell wie <span class="mono">opus</span>.</p>
+          <p><b>Die eigentliche Nachricht ist nicht die neue Zahl, sondern die Taktzahl:</b> zehn Frontier-Veröffentlichungen zwischen Mitte April und Anfang November 2026. Ein gedrucktes Buch kann diesem Rhythmus nicht folgen. Was das Kapitel dazu selbst schreibt, bleibt uneingeschränkt gültig: <em>„Benchmarks messen das, was messbar ist, nicht unbedingt das, was wichtig ist.“</em></p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, Models overview (4. September 2026)</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic, Pricing (4. September 2026)</a> · <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations">Anthropic, Model deprecations (4. September 2026)</a> · <a href="https://code.claude.com/docs/en/model-config">Claude Code, Model configuration (4. September 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.257</a><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic, Models overview (25. November 2026)</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic, Pricing (25. November 2026)</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview">Anthropic, Release notes</a> · <a href="https://code.claude.com/docs/en/model-config">Claude Code, Model configuration (25. November 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.280 und v2.1.321</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -532,15 +673,15 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
       <div class="e-body">
         <div class="blk">
           <p>Das Kapitel endet mit der Frage, ob die Zusicherung hält, OpenClaw bleibe nach Steinbergers Wechsel zu OpenAI quelloffen und unabhängig.</p>
-          <p>Am <b>8. Juli 2026</b> wurde die <b>OpenClaw Foundation</b> als gemeinnützige Stiftung gegründet. Das Projekt bleibt unter MIT-Lizenz, hat bezahlte Maintainer und einen neutralen Träger. Über zwei Dutzend Core-Maintainer arbeiten daran, darunter je vier von Nvidia und Microsoft, je drei von OpenAI und Tencent sowie Beteiligte von Atlassian, Xiaomi, Red Hat und Hugging Face. Hauptsponsoren sind OpenAI, GitHub und Nvidia.</p>
+          <p>Am <b>8. Juli 2026</b> wurde die <b>OpenClaw Foundation</b> als gemeinnützige Stiftung gegründet. Das Projekt bleibt unter MIT-Lizenz, hat bezahlte Maintainer und einen neutralen Träger. Über zwei Dutzend Core-Maintainer arbeiten daran, darunter je vier von Nvidia und Microsoft, je drei von OpenAI und Tencent sowie Beteiligte von Atlassian, Xiaomi, Red Hat und Hugging Face. Finanziert wird die Stiftung von Spendern, darunter Amazon, Lobster Computer Company, Offline Holdings, OpenAI, Red Hat und — als größter Spender — die University of Michigan; GitHub, Nvidia und andere stellen Infrastruktur. Das README hält dazu fest: „OpenAI is a donor, not an owner.“</p>
           <ul class="bul">
-            <li><b>Sternzahl:</b> Das Buch nennt 250.000 mit dem ehrlichen Zusatz, dass die Zahl schwankt. Inzwischen über 375.000. Aussagekräftiger ist ohnehin eine andere Größe: rund 4,5 Millionen neue selbstgehostete Instanzen pro Woche.</li>
-            <li><b>Sicherheitsinfrastruktur:</b> Der Satz „kein Bug-Bounty-Programm, kein dediziertes Sicherheitsteam und kein formaler Audit-Prozess“ beschreibt den Zustand vor der Professionalisierung. Das Projekt hat seither auf Zuverlässigkeit umgestellt — Agent-Recovery, Audit-Trails, MCP-Validierung, LTS-Roadmap. Die grundsätzliche Sicherheitskritik bleibt berechtigt.</li>
+            <li><b>Sternzahl:</b> Das Buch nennt 250.000 mit dem ehrlichen Zusatz, dass die Zahl schwankt. Inzwischen über 395.000. Aussagekräftiger ist ohnehin eine andere Größe: rund 4,5 Millionen neue selbstgehostete Instanzen pro Woche.</li>
+            <li><b>Sicherheitsinfrastruktur:</b> Der Satz „kein Bug-Bounty-Programm, kein dediziertes Sicherheitsteam und kein formaler Audit-Prozess“ stimmt nur noch zu zwei Dritteln. Einen externen Audit gibt es inzwischen: Trail of Bits meldete 27 Advisories, keines kritisch, zwei mit hoher Einstufung (Bericht vom 21. September 2026). Dazu kamen OpenClaw 2.0 (30. August 2026) und OpenClaw Enterprise (29. September 2026). Ein bezahltes Bug-Bounty-Programm gibt es weiterhin nicht, ein eigenes Sicherheitsteam auch nicht: Die Sicherheitsarbeit teilen sich Maintainer, darunter Ingenieure von Nvidia und Tencent. Die grundsätzliche Sicherheitskritik bleibt berechtigt.</li>
           </ul>
-          <p><b>Die Pointe hat sich verbessert:</b> Big Tech finanziert inzwischen die quelloffene Alternative zu Big Tech. Ob das die Unabhängigkeit sichert oder nur eleganter verpackt, ist die Frage, die an die Stelle der alten tritt.</p>
+          <p><b>Die Pointe hat sich verbessert:</b> Big Tech finanziert inzwischen die quelloffene Alternative zu Big Tech mit — neben einer Universität als größtem Spender. Ob das die Unabhängigkeit sichert oder nur eleganter verpackt, ist die Frage, die an die Stelle der alten tritt.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://thenewstack.io/openclaw-foundation-nonprofit-status/">The New Stack</a> · <a href="https://steipete.me/posts/2026/openclaw">Peter Steinberger</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://openclaw.ai/blog/introducing-openclaw-foundation">OpenClaw: Introducing the OpenClaw Foundation (8. Juli 2026)</a> · <a href="https://github.com/openclaw/openclaw/blob/main/README.md">OpenClaw README (25. November 2026)</a> · <a href="https://openclaw.ai/blog/openclaw-trail-of-bits-engagement-recap">OpenClaw: Trail of Bits engagement recap (21. September 2026)</a> · <a href="https://thenewstack.io/openclaw-foundation-nonprofit-status/">The New Stack</a> · <a href="https://steipete.me/posts/2026/openclaw">Peter Steinberger</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -553,7 +694,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <table>
             <thead><tr><th>Plattform</th><th>Im Buch</th><th>Stand August 2026</th></tr></thead>
             <tbody>
-              <tr><td>Lovable</td><td class="num">400 Mio. $ ARR, Bewertung 6,6 Mrd. $</td><td class="num">rund 500 Mio. $ ARR, Bewertung rund 13,2 Mrd. $ — in sechs Monaten verdoppelt</td></tr>
+              <tr><td>Lovable</td><td class="num">400 Mio. $ ARR, Bewertung 6,6 Mrd. $</td><td class="num">rund 500 Mio. $ ARR, Bewertung 13,3 Mrd. $ (Series C über 400 Mio. $, 12. August 2026) — seit Dezember 2025 verdoppelt</td></tr>
               <tr><td>Replit</td><td class="num">50 Mio.+ Nutzer, 9 Mrd. $ Bewertung</td><td class="num">Bewertung unverändert; rund 525 Mio. $ ARR, Unternehmensziel 1 Mrd. $ zum Jahresende (nicht extern geprüft)</td></tr>
               <tr><td>Bolt.new</td><td>keine Zahlen genannt</td><td class="num">rund 40 Mio. $ ARR bei rund 700 Mio. $ Bewertung, profitabel — deutlich hinter Lovable und Replit</td></tr>
             </tbody>
@@ -561,7 +702,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
         </div>
         <div class="blk"><p>Die Einordnungen des Buchs — Lovable als Schönheitskönig mit tiefer Supabase-Integration, Bolt als Sprinter ohne Plan-Schritt, Replit als All-in-One-Plattform für Nicht-Programmierer — bleiben zutreffend. Nur die Größenverhältnisse haben sich verschoben.</p></div>
       </div>
-      <div class="src"><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quelle</b><a href="https://siliconangle.com/2026/08/12/vibe-coding-startup-lovable-doubles-valuation-13-3b-400m-raise/">SiliconANGLE, 12. August 2026</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -572,13 +713,13 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
       <div class="e-body">
         <div class="blk">
           <ul class="bul">
-            <li><b>OpenCode:</b> Das Buch nennt über 160.000 GitHub-Sterne (Stand Mai 2026). Inzwischen über 170.000.</li>
-            <li><b>Spec Kit:</b> Das Buch nennt „über 80 Erweiterungen“ — an <b>vier</b> Stellen: als Abschnittsüberschrift in Kapitel 5 (S. 96) und damit auch im Inhaltsverzeichnis, im Fließtext sowie in der Vergleichstabelle in Kapitel 7 (S. 121). Eine volatile Zahl in einer Überschrift wandert automatisch ins Inhaltsverzeichnis — eine Lehre für Band 2. Belastbarer sind heute andere Kennzahlen: über 120.000 GitHub-Sterne und Version 0.11.0 vom Juni 2026 mit Unterstützung für mehr als 30 KI-Agenten.</li>
-            <li><b>BMAD:</b> Das Buch beschreibt Version 6 mit Skills Architecture und BMad Builder. Aktuell ist die 6.8er-Linie; eine Version 7 ist angekündigt, aber ohne Termin. <b>Neu und im Buch nicht enthalten:</b> Seit Juli 2026 gibt es einen dritten Weg von der Aufgabenbeschreibung zum eingecheckten Code — neben der vollen Methode und Quick Dev jetzt den <b>BMad Loop</b>.</li>
+            <li><b>OpenCode:</b> Das Buch nennt über 160.000 GitHub-Sterne (Stand Mai 2026). Inzwischen über 229.000; das Repository liegt unter <span class="mono">anomalyco/opencode</span>.</li>
+            <li><b>Spec Kit:</b> Das Buch nennt „über 80 Erweiterungen“ — an <b>vier</b> Stellen: als Abschnittsüberschrift in Kapitel 5 (S. 96) und damit auch im Inhaltsverzeichnis, im Fließtext sowie in der Vergleichstabelle in Kapitel 7 (S. 121). Eine volatile Zahl in einer Überschrift wandert automatisch ins Inhaltsverzeichnis — eine Lehre für Band 2. Belastbarer sind heute andere Kennzahlen: über 150.000 GitHub-Sterne und Version 1.4.5 vom 25. November 2026 mit Unterstützung für mehr als 30 KI-Agenten (zu den Folgen für das Kapitel siehe E-10).</li>
+            <li><b>BMAD:</b> Das Buch beschreibt Version 6 mit Skills Architecture und BMad Builder. Aktuell ist die 6.12er-Linie; Version 7 liegt als Preview vor (siehe E-09). <b>Neu und im Buch nicht enthalten:</b> Seit Juli 2026 gibt es einen dritten Weg von der Aufgabenbeschreibung zum eingecheckten Code — neben der vollen Methode und Build (im Buch: Quick Dev) jetzt den <b>BMad Loop</b>.</li>
           </ul>
         </div>
       </div>
-      <div class="src"><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -591,24 +732,25 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Das Buch zitiert aus der Stack-Overflow-Erhebung 2025 die Werte 84 % Nutzung, 69 % berichtete Produktivitätsgewinne, 46 % fehlendes Vertrauen in die Genauigkeit und 66 % Frustration über „fast richtige“ Lösungen. Alle vier bleiben korrekt.</p>
           <p><b>Derselben Erhebung</b> ist aber eine Kennzahl zu entnehmen, die das Bild schärfer fasst als die im Buch zitierte: Nur <b>29 %</b> der Befragten gaben an, KI-Ergebnissen zu vertrauen — <b>elf Prozentpunkte weniger als 2024</b>. Stack Overflow hat diesen Befund im Februar 2026 unter dem Titel „Closing the developer AI trust gap“ selbst zum Thema gemacht.</p>
           <p><b>Das Leitmotiv:</b> Nutzung steigt, Vertrauen fällt — belegt als Trend von 2024 auf 2025, nicht als Momentaufnahme. Diese Schere ist als Befund haltbarer als jeder Einzelwert und trägt die Argumentation von Kapitel 10 besser als die Misstrauens-Quote allein.</p>
-          <p><b>Zur Einordnung:</b> Eine publizierte Nachfolgeerhebung gibt es noch nicht — die Umfrage 2026 lief im Sommer an, ihre Ergebnisse erscheinen voraussichtlich erst nach dem Buch. Sekundärquellen, die die genannten Werte bereits als „Survey 2026“ führen, verwechseln das Erhebungsjahr; diese Seite wird aktualisiert, sobald die echten 2026er-Zahlen vorliegen.</p>
+          <p><b>Die Erhebung 2026</b> ist am 6. Oktober 2026 erschienen, mit 30.903 gültigen Antworten (2025: über 49.000). Als Fortschreibung taugt sie nicht: Die vier im Buch zitierten Werte haben in den veröffentlichten KI-Ergebnissen kein Gegenstück, und die Vertrauensfrage hat eine neue Skala. Stack Overflow liest aus ihr einen Anstieg — über 87 % mit „some level of trust“ gegenüber 31 % im Vorjahr — und schränkt selbst ein: 48 % vertrauen nur bei leicht überprüfbaren Aufgaben mit geringem Risiko. Wegen der geänderten Frage schließt das nicht an die 29 % an. Die Schere zwischen Nutzung und Vertrauen bleibt als Trend von 2024 auf 2025 belegt; für 2026 ist sie mit denselben Fragen nicht mehr messbar.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/">Stack Overflow: Closing the developer AI trust gap (18. Februar 2026)</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/">Stack Overflow: Closing the developer AI trust gap (18. Februar 2026)</a> · <a href="https://stackoverflow.blog/2026/10/06/the-results-of-the-2026-developer-survey-are-here/">Stack Overflow: The results of the 2026 Developer Survey (6. Oktober 2026)</a> · <a href="https://survey.stackoverflow.co/2026/">Developer Survey 2026</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
       <div class="e-top">
-        <div class="e-id"><span class="e-num">A-06</span><span class="pill p-low">Kapitel 11 · S. 201</span></div>
-        <h3>EU AI Act — die Prognose des Buchs ist eingetreten</h3>
+        <div class="e-id"><span class="e-num">A-06</span><span class="pill p-low">Kapitel 8 · S. 159 · Kapitel 11 · S. 201</span></div>
+        <h3>EU AI Act — die Prognose des Buchs ist eingetreten; nur Kapitel 8 nennt noch die alte Frist</h3>
       </div>
       <div class="e-body">
         <div class="blk">
           <p>Kapitel 11 schreibt, die Hochrisiko-Pflichten griffen „nach der im Mai 2026 vereinbarten Fristverschiebung im Wesentlichen ab Ende 2027“. Das lässt sich präzisieren, und zwar bestätigend.</p>
-          <p>Der Digital Omnibus wurde am 24. Juli 2026 im Amtsblatt veröffentlicht und trat am 27. Juli 2026 in Kraft — sechs Tage vor der ursprünglichen Frist. Die Hochrisiko-Pflichten nach Annex III verschieben sich auf den <b>2. Dezember 2027</b>, die nach Annex I auf den <b>2. August 2028</b>. Die Transparenzpflichten nach Artikel 50 gelten unverändert seit August 2026.</p>
+          <p>Der Digital Omnibus — Verordnung (EU) 2026/1744 vom 8. Juli 2026 — wurde am 24. Juli 2026 im Amtsblatt veröffentlicht und trat am 27. Juli 2026 in Kraft, sechs Tage vor der ursprünglichen Frist. Die Hochrisiko-Pflichten nach Annex III verschieben sich auf den <b>2. Dezember 2027</b>, die nach Annex I auf den <b>2. August 2028</b>. Damit ist auch der Vorbehalt im Quellenverzeichnis (S. 210, „formale Annahme/Amtsblatt-Veröffentlichung des Omnibus ausstehend“) erledigt. Kapitel 8 nennt auf S. 159 dagegen noch „Hochrisiko-Systeme ab 2. August 2026“, ohne die Verschiebung; maßgeblich sind die Daten hier.</p>
+          <p>Zwei Stichtage liegen näher. Die Transparenzpflichten nach Artikel 50 gelten seit dem 2. August 2026; Anbieter generativer Systeme, die schon vorher auf dem Markt waren, müssen die Kennzeichnung nach Artikel 50 Absatz 2 aber erst bis zum <b>2. Dezember 2026</b> umsetzen (Art. 111 Abs. 4). Am selben Tag werden zwei neue Verbote in Artikel 5 anwendbar: KI-Systeme, die ohne Einwilligung intime oder sexuell explizite Darstellungen identifizierbarer Personen erzeugen, und solche, die Missbrauchsdarstellungen von Kindern erzeugen.</p>
         </div>
       </div>
-      <div class="src"><b>Quelle</b><a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/">Rat der Europäischen Union</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng">Verordnung (EU) 2026/1744, EUR-Lex</a> · <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">Europäische Kommission: Regulatory framework for AI (25. November 2026)</a> · <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/">Rat der Europäischen Union</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -629,7 +771,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Das Februar-Zitat ist die beste verfügbare Belegstelle für die zentrale These von Kapitel 11 und ließe sich als Fußnote ergänzen. Die April-Formel „raises the floor / raises the ceiling“ wäre darüber hinaus ein starker Kapitelabschluss — sie sagt in zwei Sätzen, was das Buch über elf Kapitel entwickelt.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy: Sequoia Ascent 2026 summary</a> · <a href="https://thenewstack.io/vibe-coding-is-passe/">The New Stack: Vibe coding is passé</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://karpathy.bearblog.dev/sequoia-ascent-2026/">Karpathy: Sequoia Ascent 2026 summary</a> · <a href="https://thenewstack.io/vibe-coding-is-passe/">The New Stack: Vibe coding is passé</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
   </div>
@@ -664,7 +806,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Weiter: Computer Use im CLI, eingebauter Browser in der Desktop-App, <span class="mono">/doctor</span> als Setup-Diagnose, <span class="mono">--safe-mode</span> zur Fehlersuche ohne Anpassungen, <span class="mono">fallbackModel</span> für bis zu drei Ausweichmodelle.</p>
         </div>
       </div>
-      <div class="src"><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -686,7 +828,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Parallelität ist damit keine Einstellung, sondern eine Entscheidung — und zwar eine, die von der Struktur der Aufgabe abhängt.</p>
         </div>
       </div>
-      <div class="src"><b>Quellen</b><a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">Google Research Blog</a> · <a href="https://arxiv.org/html/2512.08296v1">arXiv: Towards a Science of Scaling Agent Systems</a> · <a href="https://venturebeat.com/orchestration/research-shows-more-agents-isnt-a-reliable-path-to-better-enterprise-ai">VentureBeat</a><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">Google Research Blog</a> · <a href="https://arxiv.org/html/2512.08296v1">arXiv: Towards a Science of Scaling Agent Systems</a> · <a href="https://venturebeat.com/orchestration/research-shows-more-agents-isnt-a-reliable-path-to-better-enterprise-ai">VentureBeat</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -700,7 +842,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Der Bericht liest das nicht als Scheitern, sondern als Beschreibung des Berufs: Einrichten, Prompten, Beaufsichtigen, Validieren und Urteilen sind nicht die Reibung auf dem Weg zur Automatisierung, sondern die Arbeit selbst. Das ist die empirische Fassung dessen, was das Buch über elf Kapitel argumentiert.</p>
         </div>
       </div>
-      <div class="src"><span class="stand">Zuletzt geprüft: 24.&nbsp;August&nbsp;2026</span></div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
@@ -714,21 +856,37 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
           <p>Größenordnung des Ökosystems: rund 97 Millionen SDK-Downloads pro Monat, über 5.800 Server. Für das Sicherheitskapitel wichtig: Zu MCP existiert inzwischen ein behördlicher Sicherheitsleitfaden (Juni 2026) — Prompt Injection über Server- und Werkzeugbeschreibungen ist die dominante neue Angriffsklasse und im Buch nur mit einem Warnkasten vertreten.</p>
         </div>
       </div>
-      <div class="src"><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
     <article class="e">
       <div class="e-top">
-        <div class="e-id"><span class="e-num">N-05</span><span class="pill p-low">Kapitel 2</span></div>
-        <h3>AGENTS.md hat einen Träger</h3>
+        <div class="e-id"><span class="e-num">N-05</span><span class="pill p-low">Kapitel 2 · S. 31–32</span></div>
+        <h3>AGENTS.md hat einen Träger — und Claude Code liest die Datei inzwischen selbst</h3>
       </div>
       <div class="e-body">
         <div class="blk">
-          <p>Der Abschnitt in Kapitel 2 — inklusive der ernüchternden ETH-Befunde zum tatsächlichen Nutzen von Kontextdateien — bleibt inhaltlich unverändert richtig. Ergänzend: AGENTS.md wird inzwischen von der Agentic AI Foundation unter dem Dach der Linux Foundation betreut, liegt in über 60.000 Repositories und wird von mehr als einem Dutzend Werkzeugen gelesen.</p>
-          <p>Die Aussage des Buchs, dass Claude Code AGENTS.md nicht direkt liest und der empfohlene Weg der <span class="mono">@AGENTS.md</span>-Import aus der CLAUDE.md ist, gilt weiterhin.</p>
+          <p>AGENTS.md wird inzwischen von der Agentic AI Foundation unter dem Dach der Linux Foundation betreut, liegt in über 60.000 Repositories und wird von mehr als einem Dutzend Werkzeugen gelesen.</p>
+          <p><b>Claude Code gehört jetzt dazu, mit einer Bedingung.</b> Das Buch schreibt auf S. 32, Claude Code lese AGENTS.md nicht direkt. Seit <b>v2.1.277</b> (18. September 2026) tut es das — aber nur, wenn im Arbeitsverzeichnis und darüber keine <span class="mono">CLAUDE.md</span>, <span class="mono">.claude/CLAUDE.md</span> oder <span class="mono">CLAUDE.local.md</span> liegt. Gibt es eine dieser Dateien, bleibt der im Buch empfohlene <span class="mono">@AGENTS.md</span>-Import der Weg; unter <span class="mono">/config</span> („Project instructions“) lässt sich auch einstellen, dass beide gelesen werden. Der Fallstrick: Wer nachträglich eine <span class="mono">CLAUDE.local.md</span> anlegt, schaltet das direkte Lesen damit wieder ab.</p>
+          <p><b>Die ETH-Studie hat ihre Kernzahl revidiert.</b> Das Buch zitiert die erste Fassung vom Februar 2026 (Gloaguen et al., arXiv:2602.11988): rund 4 Prozentpunkte Gewinn durch von Menschen gepflegte Dateien. Die Fassungen vom 23. Juni und 29. September 2026 nennen 2,4 % (p = 21 %) und halten fest, der Gewinn sei statistisch nicht gesichert; der Benchmark heißt dort CTXbench statt AGENTbench. Gesichert ist ein anderer Befund: Von Entwicklern geschriebene Dateien schneiden signifikant besser ab als LLM-generierte, im Mittel um 7 %. Die Ernüchterung des Abschnitts fällt damit etwas deutlicher aus, und sein Rat, die Datei selbst zu schreiben, ist gestärkt.</p>
         </div>
       </div>
-      <div class="src"><span class="stand">Zuletzt geprüft: 4.&nbsp;September&nbsp;2026</span></div>
+      <div class="src"><b>Quellen</b><a href="https://agents.md/">agents.md</a> · <a href="https://code.claude.com/docs/en/memory">Claude Code, Memory (25. November 2026)</a> · <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code CHANGELOG, v2.1.277</a> · <a href="https://arxiv.org/abs/2602.11988">arXiv:2602.11988, Fassungen 1 bis 3</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
+    </article>
+
+    <article class="e">
+      <div class="e-top">
+        <div class="e-id"><span class="e-num">N-06</span><span class="pill p-low">Kapitel 11 · S. 201</span></div>
+        <h3>Software ist ab dem 9. Dezember 2026 ausdrücklich ein Produkt im Sinne der Produkthaftung</h3>
+      </div>
+      <div class="e-body">
+        <div class="blk">
+          <p>Kapitel 11 schreibt zur Haftung für KI-generierten Code, die Rechtsprechung sei noch in Bewegung, die Verantwortung bleibe aber beim Menschen. Der Gesetzgeber ist der Rechtsprechung zuvorgekommen: Das Gesetz zur Modernisierung des Produkthaftungsrechts vom 22. Oktober 2026 (BGBl. 2026 I Nr. 321, verkündet am 27. Oktober) setzt die Richtlinie (EU) 2024/2853 um und tritt am <b>9. Dezember 2026</b> in Kraft.</p>
+          <p>Software gilt danach ausdrücklich als Produkt. Ausgenommen ist freie und Open-Source-Software, die außerhalb einer Geschäftstätigkeit entwickelt oder bereitgestellt wird. Wer Software geschäftlich in Verkehr bringt, haftet für Schäden durch Produktfehler unabhängig vom Verschulden — gleichgültig, ob ein Mensch oder ein Agent den Code geschrieben hat. Künstliche Intelligenz nennt der Gesetzestext nicht eigens; eine Ausnahme für generierten Code kennt er auch nicht. Für Produkte, die bis zum 8. Dezember 2026 in Verkehr gebracht wurden, gilt das bisherige Recht.</p>
+          <p>Das stützt die Aussage des Kapitels und macht aus der Tendenz geltendes Recht. Wer mit Agenten entwickelt und ausliefert, sollte Review und Tests auch als Nachweis verstehen.</p>
+        </div>
+      </div>
+      <div class="src"><b>Quellen</b><a href="https://www.recht.bund.de/bgbl/1/2026/321/VO.html">Bundesgesetzblatt 2026 I Nr. 321</a> · <a href="https://eur-lex.europa.eu/eli/dir/2024/2853/oj">Richtlinie (EU) 2024/2853, EUR-Lex</a><span class="stand">Zuletzt geprüft: 25.&nbsp;November&nbsp;2026</span></div>
     </article>
 
   </div>
@@ -738,7 +896,7 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
   <div class="sec-head">
     <div class="eyebrow">Teil D</div>
     <h2>Lebende Tabelle</h2>
-    <p>Stand 4. September 2026. Dieser Teil wird fortgeschrieben; die übrigen Teile bleiben als Korrekturprotokoll stehen.</p>
+    <p>Stand 25. November 2026. Dieser Teil wird fortgeschrieben; die übrigen Teile bleiben als Korrekturprotokoll stehen.</p>
   </div>
 
   <h4 style="margin-top:1.6rem">Modelle in Claude Code</h4>
@@ -746,18 +904,19 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
     <table>
       <thead><tr><th>Rolle</th><th>Aktuell</th><th>Standard für</th></tr></thead>
       <tbody>
-        <tr><td>Spitzenklasse, ausdrücklich zu wählen</td><td>Claude Fable 5.1 (seit 1. September 2026)</td><td>kein Plan — <span class="mono">/model fable</span></td></tr>
-        <tr><td>Höchste Leistungsklasse in der Voreinstellung</td><td>Claude Opus 5 (seit 24. Juli 2026)</td><td>Max, Team Premium, Enterprise</td></tr>
-        <tr><td>Ausgewogene Klasse</td><td>Claude Sonnet 5 (seit Ende Juni 2026)</td><td>Pro, Team Standard</td></tr>
-        <tr><td>Kontextfenster</td><td>1 Mio. Token nativ bei allen dreien</td><td>—</td></tr>
+        <tr><td>Spitzenklasse, ausdrücklich zu wählen</td><td>Claude Fable 5.2 (seit 9. November 2026)</td><td>kein Plan — <span class="mono">/model fable</span></td></tr>
+        <tr><td>Höchste Leistungsklasse in der Voreinstellung</td><td>Claude Opus 5.5 (seit 22. September 2026)</td><td>alle Pläne: Pro, Max, Ultra, Team, Enterprise, API</td></tr>
+        <tr><td>Ausgewogene Klasse</td><td>Claude Sonnet 5.5 (seit 28. September 2026)</td><td>kein Plan — <span class="mono">/model sonnet</span></td></tr>
+        <tr><td>Schnelle Klasse</td><td>Claude Haiku 5.5 (seit 7. Oktober 2026)</td><td>kein Plan — <span class="mono">/model haiku</span></td></tr>
+        <tr><td>Kontextfenster</td><td>1 Mio. Token nativ bei allen vieren</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
   <p class="prose" style="font-size:.9rem;color:var(--ink-3);margin-top:.9rem">Der jeweils aktuelle Alias steht in der offiziellen Dokumentation. Setzen Sie ihn über <span class="mono">ANTHROPIC_DEFAULT_MODEL</span> an genau einer Stelle, nicht in jedem Skript.</p>
 
   <h4 style="margin-top:2.2rem">Preisverhältnisse</h4>
-  <p class="prose" style="margin-top:.7rem;color:var(--ink-2)">Statt Beträgen hier das, was sich als stabil erwiesen hat: <b>Ausgabe-Token kosten etwa das Fünffache von Eingabe-Token.</b> Dieses Verhältnis hat vier Modellgenerationen überstanden und gilt seit dem 1. September 2026 auf drei Stufen: 2 / 10 (Sonnet 5), 5 / 25 (Opus 5), 10 / 50 (Fable 5.1) US-Dollar je Million Token. Die absoluten Beträge haben sich mehrfach geändert — sie stehen bei den Anbietern.</p>
-  <p class="prose" style="color:var(--ink-2)">Für Claude Code gilt weiterhin die Struktur, die Kapitel 3 beschreibt: Abo mit Kontingent (Pro und zwei Max-Stufen) oder nutzungsbasierte API-Abrechnung, dazu Wochenlimits auf den Abo-Plänen. Auch Cursor und GitHub Copilot arbeiten mit dieser Mischform; Copilot hat zum 1. Juni 2026 auf nutzungsbasierte AI Credits umgestellt, was das Buch bereits vermerkt.</p>
+  <p class="prose" style="margin-top:.7rem;color:var(--ink-2)">Statt Beträgen hier das, was sich als stabil erwiesen hat: <b>Ausgabe-Token kosten etwa das Fünffache von Eingabe-Token.</b> Dieses Verhältnis hat vier Modellgenerationen überstanden und gilt heute auf vier Stufen: 0,10 / 0,50 (Haiku 5.5), 2 / 10 (Sonnet 5.5), 4 / 20 (Opus 5.5), 8 / 40 (Fable 5.2) US-Dollar je Million Token. Die absoluten Beträge haben sich mehrfach geändert — sie stehen bei den Anbietern.</p>
+  <p class="prose" style="color:var(--ink-2)">Für Claude Code gilt weiterhin die Struktur, die Kapitel 3 beschreibt: Abo mit Kontingent (Pro, Max und Ultra; Ultra steht mit 200 US-Dollar an der Stelle der Stufe, die das Buch „Max 20x“ nennt) oder nutzungsbasierte API-Abrechnung, dazu Wochenlimits auf den Abo-Plänen. Auch Cursor und GitHub Copilot arbeiten mit dieser Mischform; Copilot hat zum 1. Juni 2026 auf nutzungsbasierte AI Credits umgestellt, was das Buch bereits vermerkt. Cursor gibt es für Neukunden seit dem 12. Oktober 2026 nur noch im Paket „The X Subscription“ (siehe E-02).</p>
 
   <h4 style="margin-top:2.2rem">Werkzeuge, die im Buch anders heißen</h4>
   <div class="tbl-wrap">
@@ -767,7 +926,10 @@ npx @opengsd/gsd-pi@latest     # V2 / Pi</pre>
         <tr><td>Windsurf</td><td>Devin Desktop (seit 2. Juni 2026)</td></tr>
         <tr><td>Cascade</td><td>Devin Local</td></tr>
         <tr><td>Gemini CLI</td><td>Antigravity CLI (Endnutzer-Abschaltung 18. Juni 2026)</td></tr>
-        <tr><td>Anysphere (Cursor)</td><td>Tochter von SpaceX (seit Mitte August 2026)</td></tr>
+        <tr><td>Anysphere (Cursor)</td><td>Tochter von SpaceX (seit 14. August 2026), Sparte „SpaceXSI“</td></tr>
+        <tr><td>Cursor Hobby / Pro / Pro+ / Ultra</td><td>für Neukunden Free / Plus / Premium / Super / Ultra in „The X Subscription“ (seit 12. Oktober 2026); die alten Pläne laufen als Legacy weiter</td></tr>
+        <tr><td>Claude Max 20x</td><td>Ultra (200 US-Dollar, andere Limitstruktur)</td></tr>
+        <tr><td>OpenHands (Agent mit CLI und Web-GUI)</td><td>Agent Canvas (seit 27. Juli 2026; bisheriger Code archiviert, siehe E-11)</td></tr>
         <tr><td>Amazon Q Developer CLI</td><td>Kiro CLI (Support für die Amazon-Q-Developer-IDE-Plugins endet 30. April 2027)</td></tr>
         <tr><td><span class="mono">gsd-build/get-shit-done</span></td><td><span class="mono">open-gsd/gsd-core</span> (Zwischenname <span class="mono">get-shit-done-redux</span>, seit 30. Mai 2026 <span class="mono">gsd-core</span>; V1-Repository archiviert, letzte Änderung 31. Mai 2026)</td></tr>
       </tbody>
